@@ -27,11 +27,17 @@ const Home = () => {
     padding: 12px;
   `;
 
+  const Header = styled.div`
+    padding: 0 auto;
+  `
+
   return (
     <main className={styles.main}>
       <Wrapper>
-        <Icon />
-        <ChainSelector onSelectChain={handleSelectChain} />
+        <Header>
+          <Icon />
+          <ChainSelector onSelectChain={handleSelectChain} />
+        </Header>
         <Chain/>
         <BlockContainer
           chains={{

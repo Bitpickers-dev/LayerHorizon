@@ -5,6 +5,7 @@ import Block from "./Block"
 
 const BlocksContainer = styled.div`
     display: flex;
+    margin: 32px 0;
 `
 
 const BlockWrapper = styled.div`
