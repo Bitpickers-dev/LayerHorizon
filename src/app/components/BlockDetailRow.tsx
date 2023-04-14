@@ -10,19 +10,37 @@ type BlockDetailRowProps = {
   timestamp: number;
 };
 
-const BlockDetailRow = ({ blockNumber, numberOfTransaction, timestamp }: BlockDetailRowProps) => {
+const BlockDetailRow = (props: BlockDetailRowProps) => {
   const BlockDetailRow = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 32px 64px;
+    padding: 8px 16px;
+  `;
+
+  const BlockNumber = styled.a`
+    font-size: 15px;
+    color: #818181;
+    text-align: right;
+  `;
+
+  const Age = styled.p`
+    font-size: 12px;
+    color: #818181;
+    text-align: right;
+  `;
+
+  const NumOfTx = styled.a`
+    font-size: 15px;
+    color: #818181;
+    text-align: right;
   `;
 
   return (
     <BlockDetailRow>
-      <a className="block-detail-block-number">#{blockNumber}</a>
-      <p className="block-detail-age">{dayjs.unix(timestamp).fromNow()}</p>
-      <a className="block-detail-transaction-number">{numberOfTransaction} txns</a>
+      <BlockNumber>#{props.blockNumber}</BlockNumber>
+      <Age>{dayjs.unix(props.timestamp).fromNow()}</Age>
+      <NumOfTx>{props.numberOfTransaction} txns</NumOfTx>
     </BlockDetailRow>
   );
 };

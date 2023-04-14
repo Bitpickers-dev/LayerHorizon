@@ -1,30 +1,24 @@
 import styled from "@emotion/styled";
 
-import "../../styles/components/Blocks/blockDetail.css";
 import BlockDetailRow from "./BlockDetailRow";
 
 type BlockDetailProps = {
+  chain_name: string;
   width: number;
 };
 
 const BlockDetail = (props: BlockDetailProps) => {
-  const BlockDetailTitle = styled.h2`
-    margin: 0;
-    margin-left: 16px;
-    font-size: var(--title-font-size);
-    font-weight: bold;
-    text-align: left;
-  `;
-  //TODO:動的に幅を変える
   const BlockDetailTable = styled.div`
-    width: ${(props: BlockDetailProps) => props.width};
-    margin: 16px;
+    // width: ${(props: BlockDetailProps) => props.width}; //     width: 400px;がベスト
+    width: 400px;
+    margin-left: 16px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: gray 0 0 6px;
   `;
 
-  const blocks = Array.from({ length: 50 }, (_, i) => {
+  // TODO:fix length
+  const blocks = Array.from({ length: 5 }, (_, i) => {
     return {
       blockNumber: i + 10000000,
       numberOfTransaction: 100,
@@ -35,8 +29,7 @@ const BlockDetail = (props: BlockDetailProps) => {
   return (
     <>
       <div className="block-detail">
-        <BlockDetailTitle>Block detail</BlockDetailTitle>
-        <BlockDetailTable>
+        <BlockDetailTable chain_name={props.chain_name} width={props.width}>
           {blocks.map((block) => {
             return (
               <BlockDetailRow
