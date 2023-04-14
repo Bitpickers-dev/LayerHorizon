@@ -28,7 +28,8 @@ const Home = () => {
   `;
 
   const Header = styled.div`
-    padding: 0 auto;
+    width: fit-content;
+    margin: 0 auto;
   `
 
   return (
