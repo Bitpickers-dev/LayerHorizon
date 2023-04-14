@@ -1,4 +1,31 @@
 {
+  //stylelint
+  "stylelint.stylelintPath": "node_modules/stylelint",
+  "stylelint.validate": [
+    "css",
+    "scss"
+  ],
+  "css.validate": false,
+  "scss.validate": false,
+  //editor
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.wordWrap": "on",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "source.fixAll.stylelint": true
+  },
+  "editor.formatOnSave": true,
+  "editor.lineNumbers": "on",
+  "editor.rulers": [
+    80
+  ],
+  //eslint
+  "eslint.format.enable": false,
+  "eslint.packageManager": "yarn",
+  //files
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  //typescript
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true
+  "typescript.enablePromptUseWorkspaceTsdk": true,
 }
