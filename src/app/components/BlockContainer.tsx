@@ -18,6 +18,7 @@ const BlockContainer = (props: BlockContainerProps) => {
   const BlockDetailContainer = styled.div`
     display: flex;
     margin: auto;
+    justify-content: space-between;
   `;
 
   return (
