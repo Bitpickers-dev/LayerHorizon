@@ -6,11 +6,12 @@ import Image from "next/image";
 
 import Select, { MultiValue } from "react-select";
 
+import ChainOption from "@/types/ChainType";
+
 import ArbitrumLogo from "../public/img/chain_logos/arbitrum.svg";
 import OptimismLogo from "../public/img/chain_logos/optimism.svg";
 
 import "../style.css";
-import ChainOption from "@/types/ChainType";
 
 const ChainNameWrapper = styled.div`
   display: flex;
