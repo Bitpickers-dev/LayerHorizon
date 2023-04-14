@@ -13,6 +13,7 @@ type BlockContainerProps = {
 };
 
 const BlockContainer = (props: BlockContainerProps) => {
+  //TODO:動的にlengthを変える
   const chains = Array.from({ length: 3 }, (_, i) => i + 1);
 
   const BlockDetailContainer = styled.div`

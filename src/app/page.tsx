@@ -10,7 +10,7 @@ import ChainOption from "@/types/ChainType";
 import BlockContainer from "./components/BlockContainer";
 import ChainSelector from "./components/ChainSelector";
 import Icon from "./components/Icon";
-import Chain from "./components/blocks/Chain"
+import Chain from "./components/blocks/Chain";
 import styles from "./page.module.css";
 
 const Home = () => {
@@ -30,7 +30,7 @@ const Home = () => {
   const Header = styled.div`
     width: fit-content;
     margin: 0 auto;
-  `
+  `;
 
   return (
     <main className={styles.main}>
@@ -39,7 +39,7 @@ const Home = () => {
           <Icon />
           <ChainSelector onSelectChain={handleSelectChain} />
         </Header>
-        <Chain/>
+        <Chain />
         <BlockContainer
           chains={{
             chain_name: "",
