@@ -58,8 +58,6 @@ const NumberOfBlocks = styled.div`
   min-width: 24px;
   height: 24px;
   padding: 0 8px;
-  border-radius: 12px;
-  background-color: #ebebea;
   font-size: 12px;
   line-height: 24px;
 `;
@@ -77,12 +75,10 @@ const Block = () => {
       <L2BlockContainer>
         <L2Block>
           <Image alt="optimism" height={25} src={optimism_logo} width={25} />
-          <L2ChainName>Optimism</L2ChainName>
           <NumberOfBlocks>100</NumberOfBlocks>
         </L2Block>
         <L2Block>
           <Image alt="arbitrum" height={25} src={arbitrum_logo} width={25} />
-          <L2ChainName>Arbitrum</L2ChainName>
           <NumberOfBlocks>100</NumberOfBlocks>
         </L2Block>
       </L2BlockContainer>
