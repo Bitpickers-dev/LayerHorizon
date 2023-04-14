@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
 
+import styled from "@emotion/styled";
 import Image from "next/image";
-import ArbitrumLogo from "../public/img/chain_logos/arbitrum.svg";
-import OptimismLogo from "../public/img/chain_logos/optimism.svg";
 
 import Select, { MultiValue } from "react-select";
-import styled from "@emotion/styled";
+
+import ArbitrumLogo from "../public/img/chain_logos/arbitrum.svg";
+import OptimismLogo from "../public/img/chain_logos/optimism.svg";
 
 import "../style.css";
 import ChainOption from "@/types/ChainType";
