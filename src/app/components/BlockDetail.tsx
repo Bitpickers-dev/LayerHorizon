@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import Image from "next/image";
+import arbitrum_logo from "public/img/chain_logo/arbitrum.svg";
 
 import BlockDetailRow from "./BlockDetailRow";
 
@@ -17,6 +19,19 @@ const BlockDetail = (props: BlockDetailProps) => {
     box-shadow: gray 0 0 6px;
   `;
 
+  const ImageRow = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 8px 16px;
+  `;
+
+  const Period = styled.span`
+    margin-left: 8px;
+    vertical-align: middle;
+    text-align: left;
+  `;
+
   // TODO:fix length
   const blocks = Array.from({ length: 5 }, (_, i) => {
     return {
@@ -26,10 +41,15 @@ const BlockDetail = (props: BlockDetailProps) => {
     };
   });
 
+  //TODO:opのロゴも表示させる
   return (
     <>
       <div className="block-detail">
         <BlockDetailTable chain_name={props.chain_name} width={props.width}>
+          <ImageRow>
+            <Image alt="arbitrum" height={25} src={arbitrum_logo} width={25} />
+            <Period>1234 ~ 6789</Period>
+          </ImageRow>
           {blocks.map((block) => {
             return (
               <BlockDetailRow

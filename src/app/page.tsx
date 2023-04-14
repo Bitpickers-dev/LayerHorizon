@@ -7,6 +7,7 @@ import { MultiValue } from "react-select";
 
 import ChainOption from "@/types/ChainType";
 
+import BlockDetail from "./components/BlockDetail";
 import ChainSelector from "./components/ChainSelector";
 import Icon from "./components/Icon";
 import Chain from "./components/blocks/Chain";
@@ -39,6 +40,7 @@ const Home = () => {
           <ChainSelector onSelectChain={handleSelectChain} />
         </Header>
         <Chain />
+        <BlockDetail chain_name={""} width={0} />
       </Wrapper>
     </main>
   );
