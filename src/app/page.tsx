@@ -1,12 +1,16 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import styles from './page.module.css'
+import Icon from './components/Icon'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <main className={styles.main}>
+
+      <Icon/>
+
       <div className={styles.description}>
         <p>
           Get started by editing&nbsp;
