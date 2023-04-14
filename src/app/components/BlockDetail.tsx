@@ -28,20 +28,18 @@ const BlockDetail = (props: BlockDetailProps) => {
 
   return (
     <>
-      <div className="block-detail">
-        <BlockDetailTable chain_name={props.chain_name} width={props.width}>
-          {blocks.map((block) => {
-            return (
-              <BlockDetailRow
-                blockNumber={block.blockNumber}
-                key={block.blockNumber}
-                numberOfTransaction={block.numberOfTransaction}
-                timestamp={block.timestamp}
-              />
-            );
-          })}
-        </BlockDetailTable>
-      </div>
+      <BlockDetailTable chain_name={props.chain_name} width={props.width}>
+        {blocks.map((block) => {
+          return (
+            <BlockDetailRow
+              blockNumber={block.blockNumber}
+              key={block.blockNumber}
+              numberOfTransaction={block.numberOfTransaction}
+              timestamp={block.timestamp}
+            />
+          );
+        })}
+      </BlockDetailTable>
     </>
   );
 };
