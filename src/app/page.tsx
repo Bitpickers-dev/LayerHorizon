@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { createContext, useState } from "react";
 
 import styled from "@emotion/styled";
 import { MultiValue } from "react-select";
@@ -12,6 +12,7 @@ import ChainSelector from "./components/ChainSelector";
 import Icon from "./components/Icon";
 import Chain from "./components/blocks/Chain"
 import styles from "./page.module.css";
+import EthBlockData from "@/types/EthBlockData";
 
 const Home = () => {
   const [selectedChain, setSelectedChain] = useState({} as MultiValue<ChainOption>);
@@ -22,6 +23,12 @@ const Home = () => {
     //TODO:chainが消された場合は-1にする
     setNumberOfChain(numberOfChain + 1);
   };
+
+  const handleClickBlock = (BlockData: EthBlockData) => {
+    console.log(BlockData.blockNumber)
+  }
+
+  const BlockContext = createContext({clickBlockHandler: handleClickBlock});
 
   const Wrapper = styled.div`
     padding: 12px;
@@ -39,7 +46,9 @@ const Home = () => {
           <Icon />
           <ChainSelector onSelectChain={handleSelectChain} />
         </Header>
-        <Chain/>
+        <BlockContext.Provider value={{clickBlockHandler: handleClickBlock}}>
+          <Chain/>
+        </BlockContext.Provider>
         <BlockContainer
           chains={{
             chain_name: "",
