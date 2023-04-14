@@ -10,6 +10,7 @@ import ChainOption from "@/types/ChainType";
 import BlockContainer from "./components/BlockContainer";
 import ChainSelector from "./components/ChainSelector";
 import Icon from "./components/Icon";
+import Block from "./components/blocks/Block"
 import styles from "./page.module.css";
 
 const Home = () => {
