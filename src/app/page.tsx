@@ -5,6 +5,7 @@ import { MultiValue } from "react-select";
 import ChainSelector from "./components/ChainSelector";
 import styles from "./page.module.css";
 import { useState } from "react";
+import Icon from './components/Icon'
 
 export default function Home() {
   const [selectedChain, setSelectedChain] = useState({} as MultiValue<ChainOption>);
@@ -15,6 +16,7 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
+      <Icon/>
       <ChainSelector onSelectChain={handleSelectChain} />
     </main>
   );
