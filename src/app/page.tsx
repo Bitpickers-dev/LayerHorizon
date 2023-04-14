@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import styled from "@emotion/styled";
 import { MultiValue } from "react-select";
 
 import ChainOption from "@/types/ChainType";
@@ -17,10 +18,16 @@ export default function Home() {
     setSelectedChain(chain);
   };
 
+  const Wrapper = styled.div`
+    padding 12px
+  `;
+
   return (
     <main className={styles.main}>
-      <Icon />
-      <ChainSelector onSelectChain={handleSelectChain} />
+      <Wrapper>
+        <Icon />
+        <ChainSelector onSelectChain={handleSelectChain} />
+      </Wrapper>
     </main>
   );
 }
