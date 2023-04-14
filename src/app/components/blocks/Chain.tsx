@@ -1,4 +1,5 @@
 
+import EthBlockData from "@/types/EthBlockData"
 import styled from "@emotion/styled"
 
 import Block from "./Block"
@@ -12,18 +13,18 @@ const BlockWrapper = styled.div`
     margin: 0 16px;
 `
 
-const Chain = () => {
+type ChainProps = {
+    blockData: EthBlockData[],
+    clickBlockHandler: (blockData: EthBlockData) => void
+}
 
-    let blocks = []
-    for(let i = 0;i < 6;i++){
-        blocks.push(i)
-    }
+const Chain = (props: ChainProps) => {
 
     return(
         <BlocksContainer>
             {
-                blocks.map(block => {
-                    return <BlockWrapper><Block/></BlockWrapper>;
+                props.blockData.map((block) => {
+                    return <BlockWrapper><Block onClick={props.clickBlockHandler} blockData={block}/></BlockWrapper>;
                 })
             }
         </BlocksContainer>

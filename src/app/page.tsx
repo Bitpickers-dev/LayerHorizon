@@ -14,6 +14,9 @@ import Chain from "./components/blocks/Chain"
 import styles from "./page.module.css";
 import EthBlockData from "@/types/EthBlockData";
 
+import dummyBlockData from "./dummy_api/BlockData"
+import blockData from "./dummy_api/BlockData";
+
 const Home = () => {
   const [selectedChain, setSelectedChain] = useState({} as MultiValue<ChainOption>);
   const [numberOfChain, setNumberOfChain] = useState(1);
@@ -24,11 +27,9 @@ const Home = () => {
     setNumberOfChain(numberOfChain + 1);
   };
 
-  const handleClickBlock = (BlockData: EthBlockData) => {
-    console.log(BlockData.blockNumber)
+  const handleClickBlock = (blockData: EthBlockData): void => {
+    console.log(blockData.blockNumber)
   }
-
-  const BlockContext = createContext({clickBlockHandler: handleClickBlock});
 
   const Wrapper = styled.div`
     padding: 12px;
@@ -46,9 +47,7 @@ const Home = () => {
           <Icon />
           <ChainSelector onSelectChain={handleSelectChain} />
         </Header>
-        <BlockContext.Provider value={{clickBlockHandler: handleClickBlock}}>
-          <Chain/>
-        </BlockContext.Provider>
+        <Chain blockData={dummyBlockData} clickBlockHandler={handleClickBlock}/>
         <BlockContainer
           chains={{
             chain_name: "",

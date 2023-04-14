@@ -6,6 +6,8 @@ import Image from "next/image";
 import ethereum_logo from "public/img/chain_logo/ethereum.svg"
 import optimism_logo from "public/img/chain_logo/optimism.svg"
 import arbitrum_logo from "public/img/chain_logo/arbitrum.svg"
+import EthBlockData from "@/types/EthBlockData";
+import L2ChainData from "@/types/L2ChainData";
 
 const Container = styled.div`
     width: 200px;
@@ -64,27 +66,34 @@ const NumberOfBlocks = styled.div`
     line-height: 24px;
 `
 
-const Block = () => {
+type BlockProps = {
+    onClick: (blockData: EthBlockData) => void
+    blockData: EthBlockData
+}
+
+const Block = (props: BlockProps) => {
+
+    const renderL2Block = (l2ChainData: L2ChainData) => {
+        return(
+            <L2Block>
+                <Image src={l2ChainData.chainLogo} alt={l2ChainData.chainName} width={25} height={25}/>
+                <L2ChainName>{l2ChainData.chainName}</L2ChainName>
+                <NumberOfBlocks>{l2ChainData.blocks.length}</NumberOfBlocks>
+            </L2Block>
+        )
+    }
+
     return(
-        <Container>
+        <Container onClick={()=>props.onClick(props.blockData)}>
             <Header>
                 <Image src={ethereum_logo} alt="ethereum" width={40} height={40}/>
                 <div>
-                    <EthereumBlockNumber>16944</EthereumBlockNumber>
-                    <EthereumBlockAge>3 days ago</EthereumBlockAge>
+                    <EthereumBlockNumber>{props.blockData.blockNumber}</EthereumBlockNumber>
+                    <EthereumBlockAge>TODO display age</EthereumBlockAge>
                 </div>
             </Header>
             <L2BlockContainer>
-                <L2Block>
-                    <Image src={optimism_logo} alt="optimism" width={25} height={25}/>
-                    <L2ChainName>Optimism</L2ChainName>
-                    <NumberOfBlocks>100</NumberOfBlocks>
-                </L2Block>
-                <L2Block>
-                    <Image src={arbitrum_logo} alt="arbitrum" width={25} height={25}/>
-                    <L2ChainName>Arbitrum</L2ChainName>
-                    <NumberOfBlocks>100</NumberOfBlocks>
-                </L2Block>
+                {props.blockData.l2Chains.map(l2ChainData => renderL2Block(l2ChainData))}
             </L2BlockContainer>
         </Container>
     )
