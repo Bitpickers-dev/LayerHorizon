@@ -8,6 +8,7 @@ import ChainOption from "@/types/ChainType";
 
 import ChainSelector from "./components/ChainSelector";
 import Icon from "./components/Icon";
+import Block from "./components/blocks/Block"
 import styles from "./page.module.css";
 
 export default function Home() {
@@ -19,8 +20,9 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Icon />
+      <Icon/>
       <ChainSelector onSelectChain={handleSelectChain} />
+      <Block/>
     </main>
   );
 }
