@@ -11,7 +11,7 @@ import ChainOption from "@/types/ChainType";
 import ArbitrumLogo from "../public/img/chain_logos/arbitrum.svg";
 import OptimismLogo from "../public/img/chain_logos/optimism.svg";
 
-import "../style.css";
+import "./style.css";
 
 const ChainNameWrapper = styled.div`
   display: flex;
@@ -19,6 +19,7 @@ const ChainNameWrapper = styled.div`
 `;
 
 const ChainName = styled.span`
+  margin-left: 8px;
   vertical-align: middle;
 `;
 
@@ -29,7 +30,6 @@ type ChainSelectorProps = {
 const ChainSelector = ({ onSelectChain }: ChainSelectorProps) => {
   const ChainSelector = styled.div`
     display: flex;
-    width: fit-content;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
@@ -64,6 +64,7 @@ const ChainSelector = ({ onSelectChain }: ChainSelectorProps) => {
     <ChainSelector>
       <Select
         classNamePrefix="select"
+        instanceId="chain-selector"
         isMulti
         name="chains"
         onChange={handleChange}
