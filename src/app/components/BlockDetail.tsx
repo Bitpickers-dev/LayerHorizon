@@ -3,7 +3,11 @@ import styled from "@emotion/styled";
 import "../../styles/components/Blocks/blockDetail.css";
 import BlockDetailRow from "./BlockDetailRow";
 
-const BlockDetail = () => {
+type BlockDetailProps = {
+  width: number;
+};
+
+const BlockDetail = (props: BlockDetailProps) => {
   const BlockDetailTitle = styled.h2`
     margin: 0;
     margin-left: 16px;
@@ -11,10 +15,9 @@ const BlockDetail = () => {
     font-weight: bold;
     text-align: left;
   `;
-
   //TODO:動的に幅を変える
   const BlockDetailTable = styled.div`
-    width: 600px;
+    width: ${(props: BlockDetailProps) => props.width};
     margin: 16px;
     background-color: #fff;
     border-radius: 8px;
