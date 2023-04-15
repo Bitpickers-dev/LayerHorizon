@@ -1,36 +1,41 @@
+import { useContext } from "react";
+
 import styled from "@emotion/styled";
 import Image from "next/image";
 import arbitrum_logo from "public/img/chain_logo/arbitrum.svg";
+
+import { BlockContext } from "../../hooks/useBlockContext";
 
 import BlockDetailRow from "./BlockDetailRow";
 
 type BlockDetailProps = {
   chain_name: string;
-  width: number;
 };
 
+//TODO:fix width
+const BlockDetailTable = styled.div`
+  width: 400px;
+  margin-left: 16px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: gray 0 0 6px;
+`;
+
+const ImageRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 16px;
+`;
+
+const Period = styled.span`
+  margin-left: 8px;
+  vertical-align: middle;
+  text-align: left;
+`;
+
 const BlockDetail = (props: BlockDetailProps) => {
-  const BlockDetailTable = styled.div`
-    // width: ${(props: BlockDetailProps) => props.width}; //     width: 400px;がベスト
-    width: 400px;
-    margin-left: 16px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: gray 0 0 6px;
-  `;
-
-  const ImageRow = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding: 8px 16px;
-  `;
-
-  const Period = styled.span`
-    margin-left: 8px;
-    vertical-align: middle;
-    text-align: left;
-  `;
+  const { activeBlock } = useContext(BlockContext);
 
   // TODO:fix length
   const blocks = Array.from({ length: 5 }, (_, i) => {
@@ -45,7 +50,7 @@ const BlockDetail = (props: BlockDetailProps) => {
   return (
     <>
       <div className="block-detail">
-        <BlockDetailTable chain_name={props.chain_name} width={props.width}>
+        <BlockDetailTable>
           <ImageRow>
             <Image alt="arbitrum" height={25} src={arbitrum_logo} width={25} />
             <Period>1234 ~ 6789</Period>

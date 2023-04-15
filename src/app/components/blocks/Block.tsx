@@ -1,18 +1,24 @@
 "use client";
 
+import { useContext } from "react";
+
 import styled from "@emotion/styled";
 import Image from "next/image";
 
-import arbitrum_logo from "public/img/chain_logo/arbitrum.svg";
-import ethereum_logo from "public/img/chain_logo/ethereum.svg";
-import optimism_logo from "public/img/chain_logo/optimism.svg";
+import { BlockContext } from "@/app/hooks/useBlockContext";
+import EthBlockData from "@/types/EthBlockData";
 
-const Container = styled.div`
+import EthereumLogo from "public/img/chain_logo/ethereum.svg";
+import ArbitrumLogo from "../../public/img/chain_logos/arbitrum.svg";
+import OptimismLogo from "../../public/img/chain_logos/optimism.svg";
+
+const Container = styled.button<BlockProps>`
   width: 200px;
   padding: 8px 16px;
   padding-top: 16px;
   border-radius: 16px;
   background-color: #fefefe;
+  margin-left: 16px;
 `;
 
 const Header = styled.div`
@@ -48,33 +54,62 @@ const L2Block = styled.div`
   align-items: center;
 `;
 
+const L2ChainName = styled.div`
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+`;
+
 const NumberOfBlocks = styled.div`
   min-width: 24px;
   height: 24px;
   padding: 0 8px;
+  border-radius: 12px;
+  background-color: #ebebea;
   font-size: 12px;
   line-height: 24px;
 `;
 
-const Block = () => {
+type BlockProps = {
+  blockData: EthBlockData;
+};
+
+const Block = (props: BlockProps) => {
+  const { activeBlock, setActiveBlock } = useContext(BlockContext);
+  const isBlockVisible = activeBlock;
+  const toggleBlockDetail = () => {
+    if (isBlockVisible) {
+      setActiveBlock(0);
+    } else {
+      setActiveBlock(props.blockData.block_number);
+    }
+  };
   return (
-    <Container>
+    <Container
+      blockData={{
+        block_number: props.blockData.block_number,
+        l2_chains: props.blockData.l2_chains,
+      }}
+      onClick={toggleBlockDetail}
+    >
       <Header>
-        <Image alt="ethereum" height={40} src={ethereum_logo} width={40} />
+        <Image alt="ethereum" height={40} src={EthereumLogo} width={40} />
         <div>
-          <EthereumBlockNumber>16944</EthereumBlockNumber>
-          <EthereumBlockAge>3 days ago</EthereumBlockAge>
+          <EthereumBlockNumber>{props.blockData.block_number}</EthereumBlockNumber>
+          <EthereumBlockAge>TODO display age</EthereumBlockAge>
         </div>
       </Header>
       <L2BlockContainer>
         <L2Block>
-          <Image alt="optimism" height={25} src={optimism_logo} width={25} />
-          <NumberOfBlocks>100</NumberOfBlocks>
-        </L2Block>
+          <Image alt={"arbitrum"} height={25} src={ArbitrumLogo} width={25} />
+          <L2ChainName>{"hoge"}</L2ChainName>
+          <NumberOfBlocks>{12}</NumberOfBlocks>
+        </L2Block>{" "}
         <L2Block>
-          <Image alt="arbitrum" height={25} src={arbitrum_logo} width={25} />
-          <NumberOfBlocks>100</NumberOfBlocks>
-        </L2Block>
+          <Image alt={"arbitrum"} height={25} src={OptimismLogo} width={25} />
+          <L2ChainName>{"hoge"}</L2ChainName>
+          <NumberOfBlocks>{12}</NumberOfBlocks>
+        </L2Block>{" "}
       </L2BlockContainer>
     </Container>
   );
