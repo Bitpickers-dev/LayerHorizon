@@ -5,8 +5,9 @@ import relativeTime from "dayjs/plugin/relativeTime";
 dayjs.extend(relativeTime);
 
 type BlockDetailRowProps = {
-  blockNumber: number;
-  numberOfTransaction: number;
+  block_number: number;
+  chain_name: string;
+  num_of_tx: number;
   timestamp: number;
 };
 
@@ -38,14 +39,14 @@ const NumOfTx = styled.a`
 
 const BlockDetailRow = (props: BlockDetailRowProps) => {
   const handleClick = (): void => {
-    window.location.href = `https://etherscan.io/block/${props.blockNumber}`;
+    window.location.href = `https://${props.chain_name}.io/block/${props.block_number}`;
   };
 
   return (
-    <Row blockNumber={0} numberOfTransaction={0} onClick={handleClick} timestamp={0}>
-      <BlockNumber>#{props.blockNumber}</BlockNumber>
+    <Row block_number={0} chain_name={""} num_of_tx={0} onClick={handleClick} timestamp={0}>
+      <BlockNumber>#{props.block_number}</BlockNumber>
       <Age>{dayjs.unix(props.timestamp).fromNow()}</Age>
-      <NumOfTx>{props.numberOfTransaction} txns</NumOfTx>
+      <NumOfTx>{props.num_of_tx} txns</NumOfTx>
     </Row>
   );
 };
