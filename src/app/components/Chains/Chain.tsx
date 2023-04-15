@@ -42,23 +42,8 @@ const Chain = (props: ChainProps) => {
     Object.values(props.selectedChain).some((chain) => chain.value === "Aribitrum"),
   );
 
-  const chains: Chain[] = [];
-
-  const chainSelectHandler = async () => {
-    if (Object.values(props.selectedChain).some((chain) => chain.value === "Aribitrum")) {
-      console.log("arbitrum is selected");
-    }
-    if (Object.values(props.selectedChain).some((chain) => chain.value === "Optimism")) {
-      console.log("optimism is selected");
-      const optBlocks = await getOptBatch(activeBlock.toString(16));
-      chains.push({
-        blocks: optBlocks,
-        chain_name: "optimism",
-      });
-    }
-  };
-
   useEffect(() => {
+    const chains: Chain[] = [];
     const requestBlockContainerProps = async () => {
       const ethBlockResponse = await getEthBlock(activeBlock.toString(16));
       chains.push({
