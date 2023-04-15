@@ -7,9 +7,10 @@ import arbitrum_logo from "public/img/chain_logo/arbitrum.svg";
 import { BlockContext } from "../../hooks/useBlockContext";
 
 import BlockDetailRow from "./BlockDetailRow";
+import L2ChainData from "@/types/L2ChainData";
 
 type BlockDetailProps = {
-  chain_name: string;
+  chain: L2ChainData;
 };
 
 //TODO:fix width
@@ -37,30 +38,21 @@ const Period = styled.span`
 const BlockDetail = (props: BlockDetailProps) => {
   const { activeBlock } = useContext(BlockContext);
 
-  // TODO:fix length
-  const blocks = Array.from({ length: 5 }, (_, i) => {
-    return {
-      blockNumber: i + 10000000,
-      numberOfTransaction: 100,
-      timestamp: 0,
-    };
-  });
-
   //TODO:opのロゴも表示させる
   return (
     <>
       <div className="block-detail">
         <BlockDetailTable>
           <ImageRow>
-            <Image alt="arbitrum" height={25} src={arbitrum_logo} width={25} />
-            <Period>1234 ~ 6789</Period>
+            <Image alt={props.chain.chainName} height={25} src={props.chain.chainLogo} width={25} />
+            <Period>{props.chain.blocks[0].blockNumber} ~ {props.chain.blocks.slice(-1)[0].blockNumber}</Period>
           </ImageRow>
-          {blocks.map((block) => {
+          {props.chain.blocks.map((block) => {
             return (
               <BlockDetailRow
                 blockNumber={block.blockNumber}
                 key={block.blockNumber}
-                numberOfTransaction={block.numberOfTransaction}
+                numberOfTransaction={block.numberOfTransactions}
                 timestamp={block.timestamp}
               />
             );

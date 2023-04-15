@@ -22,7 +22,7 @@ const BlockContainer = (props: BlockContainerProps) => {
   return (
     <BlockDetailContainer isVisible={activeBlock !== 0}>
       {props.blockData.l2_chains.map(chain => (
-        <BlockDetail chain_name={chain.chainName} key={chain.chainName} />
+        <BlockDetail chain={chain} key={chain.chainName} />
       ))}
     </BlockDetailContainer>
   );
