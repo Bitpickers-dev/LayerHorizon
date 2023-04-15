@@ -2,15 +2,18 @@ import { useContext } from "react";
 
 import styled from "@emotion/styled";
 import Image from "next/image";
-import arbitrum_logo from "public/img/chain_logo/arbitrum.svg";
+
+import DummyLogo from "public/img/chain_logo/dummy.svg"
+
+import { LogoContext } from "@/app/hooks/useLogoContext";
+import Chain from "@/types/Chain";
 
 import { BlockContext } from "../../hooks/useBlockContext";
 
 import BlockDetailRow from "./BlockDetailRow";
-import L2ChainData from "@/types/L2ChainData";
 
 type BlockDetailProps = {
-  chain: L2ChainData;
+  chain: Chain;
 };
 
 //TODO:fix width
@@ -37,6 +40,9 @@ const Period = styled.span`
 
 const BlockDetail = (props: BlockDetailProps) => {
   const { activeBlock } = useContext(BlockContext);
+  const { logos } = useContext(LogoContext)
+
+  const logo = (logos.find(logo => logo.name === props.chain.chain_name)?.logo)??DummyLogo;
 
   //TODO:opのロゴも表示させる
   return (
@@ -44,15 +50,15 @@ const BlockDetail = (props: BlockDetailProps) => {
       <div className="block-detail">
         <BlockDetailTable>
           <ImageRow>
-            <Image alt={props.chain.chainName} height={25} src={props.chain.chainLogo} width={25} />
-            <Period>{props.chain.blocks[0].blockNumber} ~ {props.chain.blocks.slice(-1)[0].blockNumber}</Period>
+            <Image alt={props.chain.chain_name} height={25} src={logo} width={25} />
+            <Period>{props.chain.blocks[0].number} ~ {props.chain.blocks.slice(-1)[0].number}</Period>
           </ImageRow>
           {props.chain.blocks.map((block) => {
             return (
               <BlockDetailRow
-                blockNumber={block.blockNumber}
-                key={block.blockNumber}
-                numberOfTransaction={block.numberOfTransactions}
+                blockNumber={parseInt(block.number, 16)}
+                key={block.number}
+                numberOfTransaction={block.count}
                 timestamp={block.timestamp}
               />
             );

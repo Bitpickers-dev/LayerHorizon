@@ -75,15 +75,11 @@ const Block = (props: BlockProps) => {
   const { activeBlock, setActiveBlock } = useContext(BlockContext);
   const { logos } = useContext(LogoContext)
   const isBlockVisible = activeBlock;
-  const toggleBlockDetail = () => {
-    if (isBlockVisible) {
-      setActiveBlock(0);
-    } else {
-      setActiveBlock(props.number);
-    }
+  const displayBlockDetail = () => {
+    setActiveBlock(props.number);
   };
   return (
-    <Container onClick={toggleBlockDetail}>
+    <Container onClick={displayBlockDetail}>
       <Header>
         <Image alt="ethereum" height={40} src={EthereumLogo} width={40} />
         <div>

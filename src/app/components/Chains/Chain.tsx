@@ -8,6 +8,8 @@ import { BlockContext } from "@/app/hooks/useBlockContext";
 
 import BlockProps from "@/types/BlockProps";
 
+import BlockContainer from "../Blocks/BlockContainer";
+
 
 const BlocksContainer = styled.div`
   display: flex;
@@ -40,7 +42,70 @@ const Chain = (props: ChainProps) => {
           })}
         </BlockWrapper>
       </BlocksContainer>
-      {/* <BlockContainer  /> */}
+      <BlockContainer chains={
+        [
+          {
+            blocks: [
+              {
+                count: 5,
+                number: "100000000",
+                timestamp: 0,
+              }
+            ],
+            chain_name: "ethereum"
+          },
+          {
+            blocks: [
+              {
+                count: 5,
+                number: "100000000",
+                timestamp: 0,
+              },
+              {
+                count: 5,
+                number: "100000001",
+                timestamp: 0,
+              },
+              {
+                count: 5,
+                number: "100000002",
+                timestamp: 0
+              },
+              {
+                count: 5,
+                number: "100000003",
+                timestamp: 0,
+              }
+            ],
+            chain_name: "arbitrum"
+          },
+          {
+            blocks: [
+              {
+                count: 5,
+                number: "100000000",
+                timestamp: 0,
+              },
+              {
+                count: 5,
+                number: "100000001",
+                timestamp: 0,
+              },
+              {
+                count: 5,
+                number: "100000002",
+                timestamp: 0
+              },
+              {
+                count: 5,
+                number: "100000003",
+                timestamp: 0,
+              }
+            ],
+            chain_name: "optimism"
+          }
+        ]
+      }/>
     </BlockContext.Provider>
   );
 };
