@@ -8,7 +8,6 @@ import { BlockContext } from "@/app/hooks/useBlockContext";
 
 import BlockProps from "@/types/BlockProps";
 
-import BlockContainer from "../Blocks/BlockContainer";
 
 const BlocksContainer = styled.div`
   display: flex;
@@ -41,7 +40,7 @@ const Chain = (props: ChainProps) => {
           })}
         </BlockWrapper>
       </BlocksContainer>
-      <BlockContainer blockData={number} />
+      {/* <BlockContainer  /> */}
     </BlockContext.Provider>
   );
 };
