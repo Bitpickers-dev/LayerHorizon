@@ -48,12 +48,6 @@ const L2Block = styled.div`
   align-items: center;
 `;
 
-const L2ChainName = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 12px;
-`;
-
 const NumberOfBlocks = styled.div`
   min-width: 24px;
   height: 24px;

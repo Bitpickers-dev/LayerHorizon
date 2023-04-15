@@ -1,4 +1,4 @@
-import "./globals.css";
+import "./Styles/globals.css";
 
 export const metadata = {
   title: "Layer Horizon",

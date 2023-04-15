@@ -7,13 +7,13 @@ import { MultiValue } from "react-select";
 
 import ChainOption from "@/types/ChainType";
 
-import BlockDetail from "./components/BlockDetail";
-import ChainSelector from "./components/ChainSelector";
+import styles from "./Styles/page.module.css";
+import Chain from "./components/Chains/Chain";
+import ChainSelector from "./components/Chains/ChainSelector";
 import Icon from "./components/Icon";
-import Chain from "./components/blocks/Chain";
-import styles from "./page.module.css";
 
 const Home = () => {
+  //TODO:pass the selectedChain to the Chain component
   const [selectedChain, setSelectedChain] = useState({} as MultiValue<ChainOption>);
   const [numberOfChain, setNumberOfChain] = useState(1);
 
@@ -40,7 +40,6 @@ const Home = () => {
           <ChainSelector onSelectChain={handleSelectChain} />
         </Header>
         <Chain />
-        <BlockDetail chain_name={""} width={0} />
       </Wrapper>
     </main>
   );
