@@ -23,45 +23,45 @@ const ChainName = styled.span`
   vertical-align: middle;
 `;
 
+const SelectorContainer = styled.div`
+  display: flex;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
+`;
+
 type ChainSelectorProps = {
   onSelectChain: (chain: MultiValue<ChainOption>) => void;
 };
 
+const options: ChainOption[] = [
+  {
+    label: (
+      <ChainNameWrapper>
+        <Image alt="optimism" className="chain-logo" height={20} src={OptimismLogo} width={20} />
+        <ChainName>Optimism</ChainName>
+      </ChainNameWrapper>
+    ),
+    value: "Optimism",
+  },
+  {
+    label: (
+      <ChainNameWrapper>
+        <Image alt="arbitrum" className="chain-logo" height={20} src={ArbitrumLogo} width={20} />
+        <ChainName>Arbitrum</ChainName>
+      </ChainNameWrapper>
+    ),
+    value: "Arbitrum",
+  },
+];
+
 const ChainSelector = ({ onSelectChain }: ChainSelectorProps) => {
-  const ChainSelector = styled.div`
-    display: flex;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
-  `;
-
-  const options: ChainOption[] = [
-    {
-      label: (
-        <ChainNameWrapper>
-          <Image alt="optimism" className="chain-logo" height={20} src={OptimismLogo} width={20} />
-          <ChainName>Optimism</ChainName>
-        </ChainNameWrapper>
-      ),
-      value: "Optimism",
-    },
-    {
-      label: (
-        <ChainNameWrapper>
-          <Image alt="arbitrum" className="chain-logo" height={20} src={ArbitrumLogo} width={20} />
-          <ChainName>Arbitrum</ChainName>
-        </ChainNameWrapper>
-      ),
-      value: "Arbitrum",
-    },
-  ];
-
   const handleChange = (option: MultiValue<ChainOption>) => {
     onSelectChain(option);
   };
 
   return (
-    <ChainSelector>
+    <SelectorContainer>
       <Select
         classNamePrefix="select"
         instanceId="chain-selector"
@@ -73,7 +73,7 @@ const ChainSelector = ({ onSelectChain }: ChainSelectorProps) => {
           control: (base) => ({ ...base, margin: "16px", width: "400px" }),
         }}
       />
-    </ChainSelector>
+    </SelectorContainer>
   );
 };
 

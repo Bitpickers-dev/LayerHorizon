@@ -7,10 +7,7 @@ import { MultiValue } from "react-select";
 
 import ChainOption from "@/types/ChainType";
 
-import BlockDetail from "./components/BlockDetail";
 import ChainSelector from "./components/ChainSelector";
-import Icon from "./components/Icon";
-import Chain from "./components/blocks/Chain";
 import styles from "./page.module.css";
 
 const Home = () => {
@@ -34,14 +31,13 @@ const Home = () => {
 
   return (
     <main className={styles.main}>
-      <Wrapper>
+      {/* <Wrapper>
         <Header>
           <Icon />
-          <ChainSelector onSelectChain={handleSelectChain} />
         </Header>
         <Chain />
-        <BlockDetail chain_name={""} width={0} />
-      </Wrapper>
+      </Wrapper> */}
+      <ChainSelector onSelectChain={handleSelectChain} />
     </main>
   );
 };
