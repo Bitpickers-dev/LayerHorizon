@@ -1,16 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import styled from "@emotion/styled";
 
-import { MultiValue } from "react-select";
+import { getArbBatch } from "@/api/getArbBatch";
+import { getEthBlock } from "@/api/getEthBlock";
+import { getOptBatch } from "@/api/getOptBatch";
 
-import dummyBlockData from "@/app/dummy_api/BlockData";
+
+import Block from "@/app/components/Blocks/Block";
 import { BlockContext } from "@/app/hooks/useBlockContext";
-import ChainOption from "@/types/ChainType";
-import EthBlockData from "@/types/EthBlockData";
 
-import Block from "../Blocks/Block";
+import BlockProps from "@/types/BlockProps";
+import Chain from "@/types/ChainData";
+
 import BlockContainer from "../Blocks/BlockContainer";
+
 
 const BlocksContainer = styled.div`
   display: flex;
@@ -22,31 +26,56 @@ const BlockWrapper = styled.div`
 `;
 
 type ChainProps = {
-  chain: MultiValue<ChainOption>;
-  ethBlockData: EthBlockData[];
+  blocks: BlockProps[];
 };
 
 //選択されたチェーンを表示する
 const Chain = (props: ChainProps) => {
   const [activeBlock, setActiveBlock] = useState<number>(0);
+  const [blockContainerProps, setBlockContainerProps] = useState<Chain[]>([]);
+
+  useEffect(() => {
+    const requestBlockContainerProps = async () => {
+      const arbBlocks = await getArbBatch(activeBlock.toString(16));
+      const optBlocks = await getOptBatch(activeBlock.toString(16));
+      const ethBlockResponse = await getEthBlock(activeBlock.toString(16));
+
+      const eth: Chain = {
+        blocks: [ethBlockResponse],
+        chain_name:'ethreum'
+      }
+
+      const arb: Chain = {
+        blocks:arbBlocks,
+        chain_name:'arbitrum'
+      }
+
+      const opt: Chain = {
+        blocks:optBlocks,
+        chain_name:'optimism'
+      }
+
+      setBlockContainerProps([eth,arb,opt]);
+    };
+
+    requestBlockContainerProps();
+  }, [activeBlock]);
   return (
     <BlockContext.Provider value={{ activeBlock, setActiveBlock }}>
       <BlocksContainer>
         <BlockWrapper>
-          {props.ethBlockData.map((data) => {
+          {props.blocks.map((block) => {
             return (
               <Block
-                blockData={{
-                  block_number: data.block_number,
-                  l2_chains: data.l2_chains,
-                }}
-                key={data.block_number}
+                key={block.number}
+                l2={block.l2}
+                number={block.number}
               />
             );
           })}
         </BlockWrapper>
       </BlocksContainer>
-      <BlockContainer blockData={dummyBlockData[0]} />
+      <BlockContainer chains={blockContainerProps}/>
     </BlockContext.Provider>
   );
 };

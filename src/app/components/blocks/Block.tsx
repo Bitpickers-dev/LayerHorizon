@@ -5,19 +5,14 @@ import { useContext } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
+import DummyLogo from "public/img/chain_logo/dummy.svg";
 import EthereumLogo from "public/img/chain_logo/ethereum.svg";
 
 import { BlockContext } from "@/app/hooks/useBlockContext";
-import EthBlockData from "@/types/EthBlockData";
+import { LogoContext } from "@/app/hooks/useLogoContext";
+import BlockProps from "@/types/BlockProps";
 
-import ArbitrumLogo from "../../public/img/chain_logos/arbitrum.svg";
-import OptimismLogo from "../../public/img/chain_logos/optimism.svg";
-
-type BlockProps = {
-  blockData: EthBlockData;
-};
-
-const Container = styled.button<BlockProps>`
+const Container = styled.button`
   width: 200px;
   padding: 8px 16px;
   padding-top: 16px;
@@ -77,40 +72,34 @@ const NumberOfBlocks = styled.div`
 
 const Block = (props: BlockProps) => {
   const { activeBlock, setActiveBlock } = useContext(BlockContext);
+  const { logos } = useContext(LogoContext)
   const isBlockVisible = activeBlock;
-  const toggleBlockDetail = () => {
-    if (isBlockVisible) {
-      setActiveBlock(0);
-    } else {
-      setActiveBlock(props.blockData.block_number);
-    }
+  const displayBlockDetail = () => {
+    setActiveBlock(props.number);
   };
   return (
-    <Container
-      blockData={{
-        block_number: props.blockData.block_number,
-        l2_chains: props.blockData.l2_chains,
-      }}
-      onClick={toggleBlockDetail}
-    >
+    <Container onClick={displayBlockDetail}>
       <Header>
         <Image alt="ethereum" height={40} src={EthereumLogo} width={40} />
         <div>
-          <EthereumBlockNumber>{props.blockData.block_number}</EthereumBlockNumber>
+          <EthereumBlockNumber>{props.number}</EthereumBlockNumber>
           <EthereumBlockAge>TODO display age</EthereumBlockAge>
         </div>
       </Header>
       <L2BlockContainer>
-        <L2Block>
-          <Image alt={"arbitrum"} height={25} src={ArbitrumLogo} width={25} />
-          <L2ChainName>{"hoge"}</L2ChainName>
-          <NumberOfBlocks>{12}</NumberOfBlocks>
-        </L2Block>{" "}
-        <L2Block>
-          <Image alt={"arbitrum"} height={25} src={OptimismLogo} width={25} />
-          <L2ChainName>{"hoge"}</L2ChainName>
-          <NumberOfBlocks>{12}</NumberOfBlocks>
-        </L2Block>{" "}
+        {
+          props.l2.map(l2 => {
+            const logo = (logos.find(logo => logo.name === l2.name)?.logo)??DummyLogo;
+
+            return (
+              <L2Block key={l2.name}>
+                <Image alt={l2.name} height={25} src={logo} width={25} />
+                <L2ChainName>{l2.name}</L2ChainName>
+                <NumberOfBlocks>{l2.count}</NumberOfBlocks>
+              </L2Block>
+            )
+          })
+        }
       </L2BlockContainer>
     </Container>
   );

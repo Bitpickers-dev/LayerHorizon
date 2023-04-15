@@ -2,14 +2,18 @@ import { useContext } from "react";
 
 import styled from "@emotion/styled";
 import Image from "next/image";
-import arbitrum_logo from "public/img/chain_logo/arbitrum.svg";
+
+import DummyLogo from "public/img/chain_logo/dummy.svg"
+
+import { LogoContext } from "@/app/hooks/useLogoContext";
+import Chain from "@/types/ChainData";
 
 import { BlockContext } from "../../hooks/useBlockContext";
 
 import BlockDetailRow from "./BlockDetailRow";
 
 type BlockDetailProps = {
-  chain_name: string;
+  chain: Chain;
 };
 
 //TODO:fix width
@@ -36,15 +40,11 @@ const Period = styled.span`
 
 const BlockDetail = (props: BlockDetailProps) => {
   const { activeBlock } = useContext(BlockContext);
+  const { logos } = useContext(LogoContext)
 
-  // TODO:fix length
-  const blocks = Array.from({ length: 5 }, (_, i) => {
-    return {
-      blockNumber: i + 10000000,
-      numberOfTransaction: 100,
-      timestamp: 0,
-    };
-  });
+  const logo = (logos.find(logo => logo.name === props.chain.chain_name)?.logo)??DummyLogo;
+
+  console.log(props)
 
   //TODO:opのロゴも表示させる
   return (
@@ -52,16 +52,16 @@ const BlockDetail = (props: BlockDetailProps) => {
       <div className="block-detail">
         <BlockDetailTable>
           <ImageRow>
-            <Image alt="arbitrum" height={25} src={arbitrum_logo} width={25} />
-            <Period>1234 ~ 6789</Period>
+            <Image alt={props.chain.chain_name} height={25} src={logo} width={25} />
+            <Period>{props.chain.blocks[0].number} ~ {props.chain.blocks.slice(-1)[0].number}</Period>
           </ImageRow>
-          {blocks.map((block) => {
+          {props.chain.blocks.map((block) => {
             return (
               <BlockDetailRow
-                block_number={block.blockNumber}
-                chain_name={props.chain_name}
-                key={block.blockNumber}
-                num_of_tx={block.numberOfTransaction}
+                block_number={parseInt(block.number, 16)}
+                chain_name={props.chain.chain_name}
+                key={block.number}
+                num_of_tx={block.count}
                 timestamp={block.timestamp}
               />
             );

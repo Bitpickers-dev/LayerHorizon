@@ -2,33 +2,39 @@ import { useContext } from "react";
 
 import styled from "@emotion/styled";
 
-import EthBlockData from "@/types/EthBlockData";
+import ChainData from "@/types/ChainData";
 
 import { BlockContext } from "../../hooks/useBlockContext";
 
 import BlockDetail from "./BlockDetail";
 
 type BlockContainerProps = {
-  blockData: EthBlockData;
+  chains: ChainData[]
 };
+
+const BlockDetailContainer = styled.div`
+    display: flex;
+    margin: auto;
+    justify-content: left;
+  `;
 
 const BlockContainer = (props: BlockContainerProps) => {
   const { activeBlock } = useContext(BlockContext);
 
-  const BlockDetailContainer = styled.div<{ isVisible: boolean }>`
-    display: flex;
-    margin: auto;
-    justify-content: left;
-    display: ${(props) => (props.isVisible ? "flex" : "none")};
-  `;
-
-  return (
-    <BlockDetailContainer isVisible={activeBlock !== 0}>
-      {props.blockData.l2_chains.map((chain) => (
-        <BlockDetail chain_name={chain.chainName} key={chain.chainName} />
-      ))}
-    </BlockDetailContainer>
-  );
+  //TODO chains[0]のみ指定しているので修正する
+  if(activeBlock !== 0 && props.chains[0].blocks){
+    return (
+      <BlockDetailContainer>
+        {props.chains.map(chain => (
+          <BlockDetail chain={chain} key={chain.chain_name} />
+        ))}
+      </BlockDetailContainer>
+    );
+  }else{
+    return (
+      <p>No block selected</p>
+    )
+  }
 };
 
 export default BlockContainer;
