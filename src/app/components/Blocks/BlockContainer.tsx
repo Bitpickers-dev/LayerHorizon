@@ -30,7 +30,7 @@ const BlockContainer = (props: BlockContainerProps) => {
       </BlockDetailContainer>
     );
   } else {
-    return ;
+    return <></>;
   }
 };
 
