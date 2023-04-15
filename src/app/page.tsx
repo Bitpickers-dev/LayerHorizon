@@ -8,6 +8,7 @@ import { MultiValue } from "react-select";
 import { getArbBatch } from "@/api/getArbBatch";
 import { getEthList } from "@/api/getEthList";
 import { getOptBatch } from "@/api/getOptBatch";
+import { LogoContext, DefaultLogo} from "@/app/hooks/useLogoContext";
 import BlockProps from "@/types/BlockProps";
 import ChainOption from "@/types/ChainType";
 
@@ -34,7 +35,7 @@ const Home = () => {
 
   useEffect(() => {
     const requestChanProps = async () => {
-      const response = await getEthList(6);
+      const response = await getEthList(100);
       const number_list = response.map(block => block.number);
 
       const blocks: BlockProps[] = await Promise.all(number_list.map(async number => {
@@ -58,7 +59,7 @@ const Home = () => {
         };
       }));
 
-      setBlockProps(blocks);
+      setBlockProps(blocks.reverse());
     };
 
     requestChanProps();
@@ -71,13 +72,15 @@ const Home = () => {
 
   return (
     <main className={styles.main}>
-      <Wrapper>
-        <Header>
-          <Icon />
-          <ChainSelector onSelectChain={handleSelectChain} />
-        </Header>
-        <Chain blocks={blockProps} />
-      </Wrapper>
+      <LogoContext.Provider value={DefaultLogo}>
+        <Wrapper>
+          <Header>
+            <Icon />
+            <ChainSelector onSelectChain={handleSelectChain} />
+          </Header>
+          <Chain blocks={blockProps} />
+        </Wrapper>
+      </LogoContext.Provider>
     </main>
   );
 };

@@ -5,12 +5,13 @@ import { useContext } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
+import DummyLogo from "public/img/chain_logo/dummy.svg";
 import EthereumLogo from "public/img/chain_logo/ethereum.svg";
 
 import { BlockContext } from "@/app/hooks/useBlockContext";
+import { LogoContext } from "@/app/hooks/useLogoContext";
 import BlockProps from "@/types/BlockProps";
 
-import ArbitrumLogo from "../../public/img/chain_logos/arbitrum.svg";
 
 const Container = styled.button`
   width: 200px;
@@ -72,6 +73,7 @@ const NumberOfBlocks = styled.div`
 
 const Block = (props: BlockProps) => {
   const { activeBlock, setActiveBlock } = useContext(BlockContext);
+  const { logos } = useContext(LogoContext)
   const isBlockVisible = activeBlock;
   const toggleBlockDetail = () => {
     if (isBlockVisible) {
@@ -92,9 +94,11 @@ const Block = (props: BlockProps) => {
       <L2BlockContainer>
         {
           props.l2.map(l2 => {
+            const logo = (logos.find(logo => logo.name === l2.name)?.logo)??DummyLogo;
+
             return (
               <L2Block key={l2.name}>
-                <Image alt={l2.name} height={25} src={ArbitrumLogo} width={25} />
+                <Image alt={l2.name} height={25} src={logo} width={25} />
                 <L2ChainName>{l2.name}</L2ChainName>
                 <NumberOfBlocks>{l2.count}</NumberOfBlocks>
               </L2Block>

@@ -12,7 +12,6 @@ import BlockProps from "@/types/BlockProps";
 const BlocksContainer = styled.div`
   display: flex;
   margin: 32px 0;
-  flex-direction: row-reverse;
 `;
 
 const BlockWrapper = styled.div`
