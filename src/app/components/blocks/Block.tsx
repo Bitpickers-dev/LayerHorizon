@@ -7,12 +7,13 @@ import Image from "next/image";
 
 import { BlockContext } from "@/app/hooks/useBlockContext";
 import EthBlockData from "@/types/EthBlockData";
+import BlockProps from "@/types/BlockProps";
 
 import EthereumLogo from "public/img/chain_logo/ethereum.svg";
 import ArbitrumLogo from "../../public/img/chain_logos/arbitrum.svg";
 import OptimismLogo from "../../public/img/chain_logos/optimism.svg";
 
-const Container = styled.button<BlockProps>`
+const Container = styled.button`
   width: 200px;
   padding: 8px 16px;
   padding-top: 16px;
@@ -70,10 +71,6 @@ const NumberOfBlocks = styled.div`
   line-height: 24px;
 `;
 
-type BlockProps = {
-  blockData: EthBlockData;
-};
-
 const Block = (props: BlockProps) => {
   const { activeBlock, setActiveBlock } = useContext(BlockContext);
   const isBlockVisible = activeBlock;
@@ -81,32 +78,26 @@ const Block = (props: BlockProps) => {
     if (isBlockVisible) {
       setActiveBlock(0);
     } else {
-      setActiveBlock(props.blockData.block_number);
+      setActiveBlock(props.number);
     }
   };
   return (
-    <Container
-      blockData={{
-        block_number: props.blockData.block_number,
-        l2_chains: props.blockData.l2_chains,
-      }}
-      onClick={toggleBlockDetail}
-    >
+    <Container onClick={toggleBlockDetail}>
       <Header>
         <Image alt="ethereum" height={40} src={EthereumLogo} width={40} />
         <div>
-          <EthereumBlockNumber>{props.blockData.block_number}</EthereumBlockNumber>
+          <EthereumBlockNumber>{props.number}</EthereumBlockNumber>
           <EthereumBlockAge>TODO display age</EthereumBlockAge>
         </div>
       </Header>
       <L2BlockContainer>
         {
-          props.blockData.l2_chains.map(l2Chain => {
+          props.l2.map(l2 => {
             return (
-              <L2Block key={l2Chain.chainName}>
-                <Image alt={l2Chain.chainName} height={25} src={l2Chain.chainLogo} width={25} />
-                <L2ChainName>{l2Chain.chainName}</L2ChainName>
-                <NumberOfBlocks>{l2Chain.blocks.length}</NumberOfBlocks>
+              <L2Block key={l2.name}>
+                <Image alt={l2.name} height={25} src={ArbitrumLogo} width={25} />
+                <L2ChainName>{l2.name}</L2ChainName>
+                <NumberOfBlocks>{l2.count}</NumberOfBlocks>
               </L2Block>
             )
           })
