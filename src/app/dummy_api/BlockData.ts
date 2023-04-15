@@ -1,7 +1,7 @@
 import arbitrum_logo from "public/img/chain_logo/arbitrum.svg";
 import optimism_logo from "public/img/chain_logo/optimism.svg";
 
-import EthBlockData from "@/types/EthBlockData";
+import EthBlockData from "@/types/Block";
 
 const blockData: EthBlockData[] = [
   {
@@ -77,27 +77,27 @@ const blockData: EthBlockData[] = [
       {
         blocks: [
           {
-            blockNumber: 100000,
+            blockNumber: 100005,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100001,
+            blockNumber: 100006,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100002,
+            blockNumber: 100007,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100003,
+            blockNumber: 100008,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100004,
+            blockNumber: 100009,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
@@ -108,27 +108,27 @@ const blockData: EthBlockData[] = [
       {
         blocks: [
           {
-            blockNumber: 200000,
+            blockNumber: 100005,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200001,
+            blockNumber: 100006,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200002,
+            blockNumber: 100007,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200003,
+            blockNumber: 100008,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200004,
+            blockNumber: 100009,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
@@ -144,27 +144,27 @@ const blockData: EthBlockData[] = [
       {
         blocks: [
           {
-            blockNumber: 100000,
+            blockNumber: 100010,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100001,
+            blockNumber: 100011,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100002,
+            blockNumber: 100012,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100003,
+            blockNumber: 100013,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100004,
+            blockNumber: 100014,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
@@ -175,27 +175,27 @@ const blockData: EthBlockData[] = [
       {
         blocks: [
           {
-            blockNumber: 200000,
+            blockNumber: 100010,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200001,
+            blockNumber: 100011,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200002,
+            blockNumber: 100012,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200003,
+            blockNumber: 100013,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200004,
+            blockNumber: 100014,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
@@ -211,27 +211,27 @@ const blockData: EthBlockData[] = [
       {
         blocks: [
           {
-            blockNumber: 100000,
+            blockNumber: 100015,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100001,
+            blockNumber: 100016,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100002,
+            blockNumber: 100017,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100003,
+            blockNumber: 100018,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100004,
+            blockNumber: 100019,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
@@ -242,27 +242,27 @@ const blockData: EthBlockData[] = [
       {
         blocks: [
           {
-            blockNumber: 200000,
+            blockNumber: 100015,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200001,
+            blockNumber: 100016,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200002,
+            blockNumber: 100017,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200003,
+            blockNumber: 100018,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200004,
+            blockNumber: 100019,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
@@ -278,27 +278,27 @@ const blockData: EthBlockData[] = [
       {
         blocks: [
           {
-            blockNumber: 100000,
+            blockNumber: 100020,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100001,
+            blockNumber: 100021,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100002,
+            blockNumber: 100022,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100003,
+            blockNumber: 100023,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100004,
+            blockNumber: 100024,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
@@ -309,27 +309,27 @@ const blockData: EthBlockData[] = [
       {
         blocks: [
           {
-            blockNumber: 200000,
+            blockNumber: 100020,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200001,
+            blockNumber: 100021,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200002,
+            blockNumber: 100022,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200003,
+            blockNumber: 100023,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200004,
+            blockNumber: 100024,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
@@ -345,27 +345,27 @@ const blockData: EthBlockData[] = [
       {
         blocks: [
           {
-            blockNumber: 100000,
+            blockNumber: 100025,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100001,
+            blockNumber: 100026,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100002,
+            blockNumber: 100027,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100003,
+            blockNumber: 100028,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 100004,
+            blockNumber: 100029,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
@@ -376,27 +376,27 @@ const blockData: EthBlockData[] = [
       {
         blocks: [
           {
-            blockNumber: 200000,
+            blockNumber: 100025,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200001,
+            blockNumber: 100026,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200002,
+            blockNumber: 100027,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200003,
+            blockNumber: 100028,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
           {
-            blockNumber: 200004,
+            blockNumber: 100029,
             numberOfTransactions: 100,
             timestamp: 1681484753619,
           },
