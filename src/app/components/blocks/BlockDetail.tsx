@@ -58,10 +58,10 @@ const BlockDetail = (props: BlockDetailProps) => {
           {props.chain.blocks.map((block) => {
             return (
               <BlockDetailRow
-                block_number={block.blockNumber}
-                chain_name={props.chain_name}
-                key={block.blockNumber}
-                num_of_tx={block.numberOfTransaction}
+                block_number={parseInt(block.number, 16)}
+                chain_name={props.chain.chain_name}
+                key={block.number}
+                num_of_tx={block.count}
                 timestamp={block.timestamp}
               />
             );

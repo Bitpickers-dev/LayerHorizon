@@ -41,7 +41,7 @@ const Chain = (props: ChainProps) => {
       const ethBlockResponse = await getEthBlock(activeBlock.toString(16));
 
       const eth: Chain = {
-        blocks:ethBlockResponse.result,
+        blocks: [ethBlockResponse],
         chain_name:'ethreum'
       }
 
