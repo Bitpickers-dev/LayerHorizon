@@ -35,19 +35,20 @@ const Home = () => {
 
     const requestChainProps = async () => {
       const response = await getEthList(6);
-      const number_list = response.map(block => block.number);
 
-      const blocks: BlockProps[] = await Promise.all(number_list.map(async number => {
+      const blocks: BlockProps[] = await Promise.all(response.map(async (block) => {
         const l2:{count: number, name: string}[] = [];
         if (Object.values(selectedChain).some(chain => chain.value === "Arbitrum")) {
-          const arb_count = (await getArbBatch(number)).length;
+          const arb_count = (await getArbBatch(block.number)).length;
+          console.log("arb_count=", arb_count)
           l2.push({
             count: arb_count,
             name: "arbitrum"
           })
         }
         if (Object.values(selectedChain).some(chain => chain.value === "Optimism")) {
-          const opt_count = (await getOptBatch(number)).length;
+          const opt_count = (await getOptBatch(block.number)).length;
+          console.log("opt_count=", opt_count)
           l2.push({
             count: opt_count,
             name: "optimism"
@@ -55,33 +56,10 @@ const Home = () => {
         }
         return {
           l2: l2,
-          number: parseInt(number, 16)
+          number: parseInt(block.number, 16),
+          timestamp: block.timestamp
         };
       }));
-      const number_list = response.map((block) => block.number);
-
-      const blocks: BlockProps[] = await Promise.all(
-        number_list.map(async (number) => {
-          const arb_count = (await getArbBatch(number)).length;
-          const opt_count = (await getOptBatch(number)).length;
-
-          const l2 = [
-            {
-              count: arb_count,
-              name: "arbitrum",
-            },
-            {
-              count: opt_count,
-              name: "optimism",
-            },
-          ];
-
-          return {
-            l2: l2,
-            number: parseInt(number, 16),
-          };
-        }),
-      );
       setBlockProps(blocks.reverse());
     };
 

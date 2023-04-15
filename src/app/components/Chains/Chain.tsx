@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 
 import { MultiValue } from "react-select";
 
+import { getArbBatch } from "@/api/getArbBatch";
 import { getEthBlock } from "@/api/getEthBlock";
 
 import { getOptBatch } from "@/api/getOptBatch";
@@ -95,7 +96,7 @@ const Chain = (props: ChainProps) => {
       <BlocksContainer>
         <BlockWrapper>
           {props.blocks.map((block) => {
-            return <Block key={block.number} l2={block.l2} number={block.number} />;
+            return <Block key={block.number} l2={block.l2} number={block.number} timestamp={block.timestamp} />;
           })}
         </BlockWrapper>
       </BlocksContainer>
