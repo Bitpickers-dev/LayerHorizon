@@ -35,11 +35,11 @@ const Home = () => {
   useEffect(() => {
     const requestChanProps = async () => {
       const response = await getEthList(6);
-      const number_list = response.result.map(block => block.number);
+      const number_list = response.map(block => block.number);
 
       const blocks: BlockProps[] = await Promise.all(number_list.map(async number => {
-        const arb_count = (await getArbBatch(number)).count;
-        const opt_count = (await getOptBatch(number)).count;
+        const arb_count = (await getArbBatch(number)).length;
+        const opt_count = (await getOptBatch(number)).length;
 
         const l2 = [
           {
