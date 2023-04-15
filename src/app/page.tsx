@@ -35,7 +35,7 @@ const Home = () => {
 
   useEffect(() => {
     const requestChanProps = async () => {
-      const response = await getEthList(100);
+      const response = await getEthList(6);
       const number_list = response.map(block => block.number);
 
       const blocks: BlockProps[] = await Promise.all(number_list.map(async number => {
