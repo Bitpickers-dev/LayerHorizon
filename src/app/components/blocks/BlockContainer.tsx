@@ -13,16 +13,17 @@ type BlockContainerProps = {
   chains: ChainData[]
 };
 
-const BlockContainer = (props: BlockContainerProps) => {
-  const { activeBlock } = useContext(BlockContext);
-
-  const BlockDetailContainer = styled.div`
+const BlockDetailContainer = styled.div`
     display: flex;
     margin: auto;
     justify-content: left;
   `;
 
-  if(activeBlock !== 0){
+const BlockContainer = (props: BlockContainerProps) => {
+  const { activeBlock } = useContext(BlockContext);
+
+  //TODO chains[0]のみ指定しているので修正する
+  if(activeBlock !== 0 && props.chains[0].blocks){
     return (
       <BlockDetailContainer>
         {props.chains.map(chain => (
