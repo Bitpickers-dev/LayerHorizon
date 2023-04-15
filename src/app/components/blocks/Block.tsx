@@ -71,9 +71,9 @@ const NumberOfBlocks = styled.div`
 `;
 
 const Block = (props: BlockProps) => {
-  const { activeBlock, setActiveBlock } = useContext(BlockContext);
+  const { setActiveBlock } = useContext(BlockContext);
   const { logos } = useContext(LogoContext);
-  const isBlockVisible = activeBlock;
+  // const isBlockVisible = activeBlock;
   const displayBlockDetail = () => {
     setActiveBlock(props.number);
   };

@@ -8,8 +8,6 @@ import DummyLogo from "public/img/chain_logo/dummy.svg";
 import { LogoContext } from "@/app/hooks/useLogoContext";
 import Chain from "@/types/ChainData";
 
-import { BlockContext } from "../../hooks/useBlockContext";
-
 import BlockDetailRow from "./BlockDetailRow";
 
 type BlockDetailProps = {
@@ -32,14 +30,14 @@ const ImageRow = styled.div`
   padding: 8px 16px;
 `;
 
-const Period = styled.span`
-  margin-left: 8px;
-  vertical-align: middle;
-  text-align: left;
-`;
+// const Period = styled.span`
+//   margin-left: 8px;
+//   vertical-align: middle;
+//   text-align: left;
+// `;
 
 const BlockDetail = (props: BlockDetailProps) => {
-  const { activeBlock } = useContext(BlockContext);
+  // const { activeBlock } = useContext(BlockContext);
   const { logos } = useContext(LogoContext);
 
   const logo = logos.find((logo) => logo.name === props.chain.chain_name)?.logo ?? DummyLogo;
