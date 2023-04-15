@@ -3,7 +3,7 @@ import { useContext } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
-import DummyLogo from "public/img/chain_logo/dummy.svg"
+import DummyLogo from "public/img/chain_logo/dummy.svg";
 
 import { LogoContext } from "@/app/hooks/useLogoContext";
 import Chain from "@/types/ChainData";
@@ -40,10 +40,9 @@ const Period = styled.span`
 
 const BlockDetail = (props: BlockDetailProps) => {
   const { activeBlock } = useContext(BlockContext);
-  const { logos } = useContext(LogoContext)
+  const { logos } = useContext(LogoContext);
 
-  const logo = (logos.find(logo => logo.name === props.chain.chain_name)?.logo)??DummyLogo;
-
+  const logo = logos.find((logo) => logo.name === props.chain.chain_name)?.logo ?? DummyLogo;
 
   //TODO:opのロゴも表示させる
   return (
