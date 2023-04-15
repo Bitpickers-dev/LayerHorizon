@@ -31,7 +31,6 @@ type ChainProps = {
   selectedChain: MultiValue<ChainOption>;
 };
 
-//選択されたチェーンを表示する
 const Chain = (props: ChainProps) => {
   const [activeBlock, setActiveBlock] = useState<number>(0);
   const [blockContainerProps, setBlockContainerProps] = useState<Chain[]>([]);

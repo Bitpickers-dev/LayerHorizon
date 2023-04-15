@@ -18,6 +18,7 @@ const Row = styled.a<BlockDetailRowProps>`
   width: 100%;
   padding: 8px 16px;
   border: none;
+  border-radius: 8px;
 `;
 
 const BlockNumber = styled.a`
