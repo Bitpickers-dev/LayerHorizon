@@ -100,16 +100,17 @@ const Block = (props: BlockProps) => {
         </div>
       </Header>
       <L2BlockContainer>
-        <L2Block>
-          <Image alt={"arbitrum"} height={25} src={ArbitrumLogo} width={25} />
-          <L2ChainName>{"hoge"}</L2ChainName>
-          <NumberOfBlocks>{12}</NumberOfBlocks>
-        </L2Block>{" "}
-        <L2Block>
-          <Image alt={"arbitrum"} height={25} src={OptimismLogo} width={25} />
-          <L2ChainName>{"hoge"}</L2ChainName>
-          <NumberOfBlocks>{12}</NumberOfBlocks>
-        </L2Block>{" "}
+        {
+          props.blockData.l2_chains.map(l2Chain => {
+            return (
+              <L2Block key={l2Chain.chainName}>
+                <Image alt={l2Chain.chainName} height={25} src={l2Chain.chainLogo} width={25} />
+                <L2ChainName>{l2Chain.chainName}</L2ChainName>
+                <NumberOfBlocks>{l2Chain.blocks.length}</NumberOfBlocks>
+              </L2Block>
+            )
+          })
+        }
       </L2BlockContainer>
     </Container>
   );

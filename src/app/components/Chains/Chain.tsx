@@ -36,10 +36,7 @@ const Chain = (props: ChainProps) => {
           {props.ethBlockData.map((data) => {
             return (
               <Block
-                blockData={{
-                  block_number: data.block_number,
-                  l2_chains: data.l2_chains,
-                }}
+                blockData={data}
                 key={data.block_number}
               />
             );
