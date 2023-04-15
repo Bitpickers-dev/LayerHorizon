@@ -1,9 +1,12 @@
 import { useContext } from "react";
+
 import styled from "@emotion/styled";
 
-import BlockDetail from "./BlockDetail";
 import EthBlockData from "@/types/EthBlockData";
+
 import { BlockContext } from "../../hooks/useBlockContext";
+
+import BlockDetail from "./BlockDetail";
 
 type BlockContainerProps = {
   blockData: EthBlockData;
@@ -21,7 +24,7 @@ const BlockContainer = (props: BlockContainerProps) => {
 
   return (
     <BlockDetailContainer isVisible={activeBlock !== 0}>
-      {props.blockData.l2_chains.map(chain => (
+      {props.blockData.l2_chains.map((chain) => (
         <BlockDetail chain_name={chain.chainName} key={chain.chainName} />
       ))}
     </BlockDetailContainer>

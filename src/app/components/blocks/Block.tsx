@@ -5,12 +5,17 @@ import { useContext } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
+import EthereumLogo from "public/img/chain_logo/ethereum.svg";
+
 import { BlockContext } from "@/app/hooks/useBlockContext";
 import EthBlockData from "@/types/EthBlockData";
 
-import EthereumLogo from "public/img/chain_logo/ethereum.svg";
 import ArbitrumLogo from "../../public/img/chain_logos/arbitrum.svg";
 import OptimismLogo from "../../public/img/chain_logos/optimism.svg";
+
+type BlockProps = {
+  blockData: EthBlockData;
+};
 
 const Container = styled.button<BlockProps>`
   width: 200px;
@@ -69,10 +74,6 @@ const NumberOfBlocks = styled.div`
   font-size: 12px;
   line-height: 24px;
 `;
-
-type BlockProps = {
-  blockData: EthBlockData;
-};
 
 const Block = (props: BlockProps) => {
   const { activeBlock, setActiveBlock } = useContext(BlockContext);
