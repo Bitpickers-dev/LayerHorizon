@@ -9,7 +9,7 @@ import ChainOption from "@/types/ChainType";
 
 import ChainSelector from "./components/Chains/ChainSelector";
 import Icon from "./components/Icon";
-import Chain from "./components/blocks/Chain";
+import Chain from "./components/Chains/Chain";
 import dummyBlockData from "./dummy_api/BlockData";
 import styles from "./Styles/page.module.css";
 
