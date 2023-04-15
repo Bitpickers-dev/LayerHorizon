@@ -73,7 +73,7 @@ const Chain = (props: ChainProps) => {
 
       const eth: Chain = {
         blocks: ethBlocks,
-        chain_name: "ethreum",
+        chain_name: "ethereum",
       };
 
       const arb: Chain = {
