@@ -19,7 +19,7 @@ const Container = styled.button`
   padding-top: 16px;
   border-radius: 16px;
   background-color: #fefefe;
-  margin-left: 16px;
+  margin: 0 8px;
 `;
 
 const Header = styled.div`
@@ -53,12 +53,6 @@ const L2Block = styled.div`
   background-color: #f6f6f6;
   justify-content: space-between;
   align-items: center;
-`;
-
-const L2ChainName = styled.div`
-  display: flex;
-  align-items: center;
-  font-size: 12px;
 `;
 
 const NumberOfBlocks = styled.div`
@@ -95,7 +89,6 @@ const Block = (props: BlockProps) => {
           return (
             <L2Block key={l2.name}>
               <Image alt={l2.name} height={25} src={logo} width={25} />
-              <L2ChainName>{l2.name}</L2ChainName>
               <NumberOfBlocks>{l2.count}</NumberOfBlocks>
             </L2Block>
           );

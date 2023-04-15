@@ -16,10 +16,9 @@ type BlockDetailProps = {
   chain: Chain;
 };
 
-//TODO:fix width
 const BlockDetailTable = styled.div`
   width: 400px;
-  margin-left: 16px;
+  margin: 0 16px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: gray 0 0 6px;
@@ -32,11 +31,12 @@ const ImageRow = styled.div`
   padding: 8px 16px;
 `;
 
-const Period = styled.span`
-  margin-left: 8px;
-  vertical-align: middle;
-  text-align: left;
-`;
+//TODO ブロックの期間を表示する
+// const Period = styled.span`
+//   margin-left: 8px;
+//   vertical-align: middle;
+//   text-align: left;
+// `;
 
 const BlockDetail = (props: BlockDetailProps) => {
   const { activeBlock } = useContext(BlockContext);
@@ -44,7 +44,6 @@ const BlockDetail = (props: BlockDetailProps) => {
 
   const logo = logos.find((logo) => logo.name === props.chain.chain_name)?.logo ?? DummyLogo;
 
-  //TODO:opのロゴも表示させる
   return (
     <>
       <div className="block-detail">

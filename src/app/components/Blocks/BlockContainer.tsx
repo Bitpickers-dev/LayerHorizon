@@ -15,13 +15,12 @@ type BlockContainerProps = {
 const BlockDetailContainer = styled.div`
   display: flex;
   margin: auto;
-  justify-content: left;
+  justify-content: center;
 `;
 
 const BlockContainer = (props: BlockContainerProps) => {
   const { activeBlock } = useContext(BlockContext);
 
-  //TODO chains[0]のみ指定しているので修正する
   if (activeBlock !== 0 && props.chains[0].blocks) {
     return (
       <BlockDetailContainer>
