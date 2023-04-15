@@ -6,7 +6,7 @@ import Image from "next/image";
 import DummyLogo from "public/img/chain_logo/dummy.svg"
 
 import { LogoContext } from "@/app/hooks/useLogoContext";
-import Chain from "@/types/Chain";
+import Chain from "@/types/ChainData";
 
 import { BlockContext } from "../../hooks/useBlockContext";
 
@@ -43,6 +43,8 @@ const BlockDetail = (props: BlockDetailProps) => {
   const { logos } = useContext(LogoContext)
 
   const logo = (logos.find(logo => logo.name === props.chain.chain_name)?.logo)??DummyLogo;
+
+  console.log(props)
 
   //TODO:opのロゴも表示させる
   return (

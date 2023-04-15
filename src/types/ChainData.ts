@@ -1,9 +1,9 @@
 
 import Block from "./Block"
 
-type Chain = {
+type ChainData = {
     blocks: Block[];
     chain_name: string;
 }
 
-export default Chain;
+export default ChainData;
