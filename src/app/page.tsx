@@ -23,6 +23,7 @@ const Header = styled.div`
 `;
 
 const Home = () => {
+  //TODO:pass the selectedChain to the Chain component
   const [selectedChain, setSelectedChain] = useState({} as MultiValue<ChainOption>);
   const [numberOfChain, setNumberOfChain] = useState(1);
 
@@ -30,6 +31,15 @@ const Home = () => {
     setSelectedChain(chain);
     setNumberOfChain(numberOfChain + 1); //TODO:chainが消された場合は-1にする
   };
+
+  const Wrapper = styled.div`
+    padding: 12px;
+  `;
+
+  const Header = styled.div`
+    width: fit-content;
+    margin: 0 auto;
+  `;
 
   return (
     <main className={styles.main}>
