@@ -67,6 +67,7 @@ const NumberOfBlocks = styled.div`
   padding: 0 8px;
   border-radius: 12px;
   background-color: #ebebea;
+  color: black;
   font-size: 12px;
   line-height: 24px;
 `;
