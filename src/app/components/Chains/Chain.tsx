@@ -50,9 +50,9 @@ const Chain = (props: ChainProps) => {
         chain_name: "ethreum",
       });
 
-      const arbBlocks = await getArbBatch(activeBlock.toString(16));
-      const optBlocks = await getOptBatch(activeBlock.toString(16));
-      const ethBlocks = [await getEthBlock(activeBlock.toString(16))];
+      const arbBlocks = await getArbBatch('0x'+activeBlock.toString(16));
+      const optBlocks = await getOptBatch('0x'+activeBlock.toString(16));
+      const ethBlocks = [await getEthBlock('0x'+activeBlock.toString(16))];
 
       const eth: Chain = {
         blocks: ethBlocks,
