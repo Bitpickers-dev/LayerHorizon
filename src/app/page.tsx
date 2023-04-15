@@ -7,21 +7,22 @@ import { MultiValue } from "react-select";
 
 import ChainOption from "@/types/ChainType";
 
-import ChainSelector from "./components/ChainSelector";
+import ChainSelector from "./components/Chains/ChainSelector";
 import Icon from "./components/Icon";
 import Chain from "./components/blocks/Chain";
 import dummyBlockData from "./dummy_api/BlockData";
-import styles from "./page.module.css";
+import styles from "./Styles/page.module.css";
+
+const Wrapper = styled.div`
+  padding: 12px;
+`;
+
+const Header = styled.div`
+  width: fit-content;
+  margin: 0 auto;
+`;
 
 const Home = () => {
-  const Wrapper = styled.div`
-    padding: 12px;
-  `;
-
-  const Header = styled.div`
-    width: fit-content;
-    margin: 0 auto;
-  `;
   const [selectedChain, setSelectedChain] = useState({} as MultiValue<ChainOption>);
   const [numberOfChain, setNumberOfChain] = useState(1);
 

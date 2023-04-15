@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 
 import BlockDetail from "./BlockDetail";
 import EthBlockData from "@/types/EthBlockData";
-import { BlockContext } from "../hooks/useBlockContext";
+import { BlockContext } from "../../hooks/useBlockContext";
 
 type BlockContainerProps = {
   blockData: EthBlockData;

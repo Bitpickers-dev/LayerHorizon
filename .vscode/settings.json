@@ -1,10 +1,7 @@
 {
   //stylelint
   "stylelint.stylelintPath": "node_modules/stylelint",
-  "stylelint.validate": [
-    "css",
-    "scss"
-  ],
+  "stylelint.validate": ["css", "scss"],
   "css.validate": false,
   "scss.validate": false,
   //editor
@@ -16,9 +13,7 @@
   },
   "editor.formatOnSave": true,
   "editor.lineNumbers": "on",
-  "editor.rulers": [
-    80
-  ],
+  "editor.rulers": [80],
   //eslint
   "eslint.format.enable": false,
   "eslint.packageManager": "yarn",
@@ -27,5 +22,5 @@
   "files.trimTrailingWhitespace": true,
   //typescript
   "typescript.tsdk": "node_modules/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }

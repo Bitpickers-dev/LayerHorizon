@@ -43,10 +43,7 @@
       "error",
       {
         "groups": [
-          [
-            "external",
-            "builtin"
-          ],
+          ["external", "builtin"],
           "internal",
           "parent",
           "sibling",
@@ -70,9 +67,7 @@
             "group": "internal"
           }
         ],
-        "pathGroupsExcludedImportTypes": [
-          "builtin"
-        ],
+        "pathGroupsExcludedImportTypes": ["builtin"],
         "newlines-between": "always-and-inside-groups", // ここを変更
         "alphabetize": {
           "order": "asc"

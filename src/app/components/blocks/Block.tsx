@@ -5,11 +5,10 @@ import { useContext } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
-import EthereumLogo from "public/img/chain_logo/ethereum.svg";
-
 import { BlockContext } from "@/app/hooks/useBlockContext";
 import EthBlockData from "@/types/EthBlockData";
 
+import EthereumLogo from "public/img/chain_logo/ethereum.svg";
 import ArbitrumLogo from "../../public/img/chain_logos/arbitrum.svg";
 import OptimismLogo from "../../public/img/chain_logos/optimism.svg";
 

@@ -7,7 +7,7 @@ import { MultiValue } from "react-select";
 import { BlockContext } from "@/app/hooks/useBlockContext";
 import ChainOption from "@/types/ChainType";
 import EthBlockData from "@/types/EthBlockData";
-import BlockContainer from "../BlockContainer";
+import BlockContainer from "../blocks/BlockContainer";
 import Block from "./Block";
 import dummyBlockData from "@/app/dummy_api/BlockData";
 
