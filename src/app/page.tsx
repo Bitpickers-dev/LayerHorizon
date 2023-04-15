@@ -13,6 +13,7 @@ import ChainSelector from "./components/Chains/ChainSelector";
 import Icon from "./components/Icon";
 
 const Home = () => {
+  //TODO:pass the selectedChain to the Chain component
   const [selectedChain, setSelectedChain] = useState({} as MultiValue<ChainOption>);
   const [numberOfChain, setNumberOfChain] = useState(1);
 
