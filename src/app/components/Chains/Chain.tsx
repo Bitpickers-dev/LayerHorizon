@@ -7,6 +7,7 @@ import { MultiValue } from "react-select";
 import { getEthBlock } from "@/api/getEthBlock";
 
 
+import { getOptBatch } from "@/api/getOptBatch";
 import Block from "@/app/components/Blocks/Block";
 import { BlockContext } from "@/app/hooks/useBlockContext";
 
@@ -39,27 +40,24 @@ const Chain = (props: ChainProps) => {
   console.log("props.selectedChain=", props.selectedChain)
 
   console.log(`Object.values(props.selectedChain).some(chain => chain.value === "Aribitrum")=`,Object.values(props.selectedChain).some(chain => chain.value === "Aribitrum"))
+
   const chains: Chain[] = []
 
-  const displayChain
+  const chainSelectHandler = async () => {
+    if (Object.values(props.selectedChain).some(chain => chain.value === "Aribitrum")) {
+      console.log("arbitrum is selected")
 
-  if (Object.values(props.selectedChain).some(chain => chain.value === "Aribitrum")) {
-    console.log("arbitrum is selected")
-    // const arbBlocks = await getArbBatch(activeBlock.toString(16));
-    // chains.push({
-    //   blocks: arbBlocks,
-    //   chain_name: 'arbitrum'
-    // });
+    }
+    if (Object.values(props.selectedChain).some(chain => chain.value === "Optimism")) {
+      console.log("optimism is selected")
+      const optBlocks = await getOptBatch(activeBlock.toString(16));
+      chains.push({
+        blocks: optBlocks,
+        chain_name: 'optimism'
+      });
+    }
   }
 
-  if (Object.values(props.selectedChain).some(chain => chain.value === "Optimism")) {
-    console.log("optimism is selected")
-    // const optBlocks = await getOptBatch(activeBlock.toString(16));
-    // chains.push({
-    //   blocks: optBlocks,
-    //   chain_name: 'optimism'
-    // });
-  }
   useEffect(() => {
     const requestBlockContainerProps = async () => {
 
