@@ -8,10 +8,10 @@ import Select, { MultiValue } from "react-select";
 
 import ChainOption from "@/types/ChainType";
 
-import ArbitrumLogo from "../public/img/chain_logos/arbitrum.svg";
-import OptimismLogo from "../public/img/chain_logos/optimism.svg";
+import ArbitrumLogo from "../../public/img/chain_logos/arbitrum.svg";
+import OptimismLogo from "../../public/img/chain_logos/optimism.svg";
 
-import "./style.css";
+import "../../Styles/chain.css";
 
 const ChainNameWrapper = styled.div`
   display: flex;

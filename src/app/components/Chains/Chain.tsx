@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 
-import Block from "./Block";
+import Block from "../Blocks/Block";
 
 const BlocksContainer = styled.div`
   display: flex;

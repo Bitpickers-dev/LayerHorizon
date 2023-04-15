@@ -7,8 +7,10 @@ import { MultiValue } from "react-select";
 
 import ChainOption from "@/types/ChainType";
 
-import ChainSelector from "./components/ChainSelector";
-import styles from "./page.module.css";
+import styles from "./Styles/page.module.css";
+import Chain from "./components/Chains/Chain";
+import ChainSelector from "./components/Chains/ChainSelector";
+import Icon from "./components/Icon";
 
 const Home = () => {
   const [selectedChain, setSelectedChain] = useState({} as MultiValue<ChainOption>);
@@ -31,13 +33,13 @@ const Home = () => {
 
   return (
     <main className={styles.main}>
-      {/* <Wrapper>
+      <Wrapper>
         <Header>
           <Icon />
+          <ChainSelector onSelectChain={handleSelectChain} />
         </Header>
         <Chain />
-      </Wrapper> */}
-      <ChainSelector onSelectChain={handleSelectChain} />
+      </Wrapper>
     </main>
   );
 };
