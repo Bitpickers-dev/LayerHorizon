@@ -3,6 +3,7 @@
 import { useContext } from "react";
 
 import styled from "@emotion/styled";
+import dayjs from "dayjs";
 import Image from "next/image";
 
 import DummyLogo from "public/img/chain_logo/dummy.svg";
@@ -74,6 +75,7 @@ const Block = (props: BlockProps) => {
   const { activeBlock, setActiveBlock } = useContext(BlockContext);
   const { logos } = useContext(LogoContext);
   const isBlockVisible = activeBlock;
+
   const displayBlockDetail = () => {
     setActiveBlock(props.number);
   };
@@ -83,7 +85,7 @@ const Block = (props: BlockProps) => {
         <Image alt="ethereum" height={40} src={EthereumLogo} width={40} />
         <div>
           <EthereumBlockNumber>{props.number}</EthereumBlockNumber>
-          <EthereumBlockAge>TODO display age</EthereumBlockAge>
+          <EthereumBlockAge>{dayjs.unix(props.timestamp).fromNow()}</EthereumBlockAge>
         </div>
       </Header>
       <L2BlockContainer>
