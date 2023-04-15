@@ -32,8 +32,32 @@ const Home = () => {
   const [blockProps, setBlockProps] = useState<BlockProps[]>([]);
 
   useEffect(() => {
+
     const requestChainProps = async () => {
       const response = await getEthList(6);
+      const number_list = response.map(block => block.number);
+
+      const blocks: BlockProps[] = await Promise.all(number_list.map(async number => {
+        const l2:{count: number, name: string}[] = [];
+        if (Object.values(selectedChain).some(chain => chain.value === "Arbitrum")) {
+          const arb_count = (await getArbBatch(number)).length;
+          l2.push({
+            count: arb_count,
+            name: "arbitrum"
+          })
+        }
+        if (Object.values(selectedChain).some(chain => chain.value === "Optimism")) {
+          const opt_count = (await getOptBatch(number)).length;
+          l2.push({
+            count: opt_count,
+            name: "optimism"
+          })
+        }
+        return {
+          l2: l2,
+          number: parseInt(number, 16)
+        };
+      }));
       const number_list = response.map((block) => block.number);
 
       const blocks: BlockProps[] = await Promise.all(
@@ -58,12 +82,11 @@ const Home = () => {
           };
         }),
       );
-
       setBlockProps(blocks.reverse());
     };
 
     requestChainProps();
-  }, []);
+  }, [selectedChain]);
 
   const handleSelectChain = (chain: MultiValue<ChainOption>): void => {
     setSelectedChain(chain);
@@ -78,7 +101,7 @@ const Home = () => {
             <Icon />
             <ChainSelector onSelectChain={handleSelectChain} />
           </Header>
-          <Chain blocks={blockProps} />
+          <Chain blocks={blockProps} selectedChain={selectedChain} />
         </Wrapper>
       </LogoContext.Provider>
     </main>
