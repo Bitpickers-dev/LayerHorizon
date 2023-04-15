@@ -38,8 +38,13 @@ const NumOfTx = styled.a`
 `;
 
 const BlockDetailRow = (props: BlockDetailRowProps) => {
+  const explolerMap = new Map();
+  explolerMap.set('ethereum', 'etherscan.io');
+  explolerMap.set('arbitrum', 'arbiscan.io');
+  explolerMap.set('optimism', 'optimistic.etherscan.io');
+
   const handleClick = (): void => {
-    window.location.href = `https://${props.chain_name}.io/block/${props.block_number}`;
+    window.location.href = `https://${explolerMap.get(props.chain_name)}/block/${props.block_number}`;
   };
 
   return (
