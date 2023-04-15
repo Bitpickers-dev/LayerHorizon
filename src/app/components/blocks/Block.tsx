@@ -72,7 +72,7 @@ const NumberOfBlocks = styled.div`
 
 const Block = (props: BlockProps) => {
   const { activeBlock, setActiveBlock } = useContext(BlockContext);
-  const { logos } = useContext(LogoContext)
+  const { logos } = useContext(LogoContext);
   const isBlockVisible = activeBlock;
   const displayBlockDetail = () => {
     setActiveBlock(props.number);
@@ -87,19 +87,17 @@ const Block = (props: BlockProps) => {
         </div>
       </Header>
       <L2BlockContainer>
-        {
-          props.l2.map(l2 => {
-            const logo = (logos.find(logo => logo.name === l2.name)?.logo)??DummyLogo;
+        {props.l2.map((l2) => {
+          const logo = logos.find((logo) => logo.name === l2.name)?.logo ?? DummyLogo;
 
-            return (
-              <L2Block key={l2.name}>
-                <Image alt={l2.name} height={25} src={logo} width={25} />
-                <L2ChainName>{l2.name}</L2ChainName>
-                <NumberOfBlocks>{l2.count}</NumberOfBlocks>
-              </L2Block>
-            )
-          })
-        }
+          return (
+            <L2Block key={l2.name}>
+              <Image alt={l2.name} height={25} src={logo} width={25} />
+              <L2ChainName>{l2.name}</L2ChainName>
+              <NumberOfBlocks>{l2.count}</NumberOfBlocks>
+            </L2Block>
+          );
+        })}
       </L2BlockContainer>
     </Container>
   );

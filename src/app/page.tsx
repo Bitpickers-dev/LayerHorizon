@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect } from "react";
 
@@ -8,7 +8,7 @@ import { MultiValue } from "react-select";
 import { getArbBatch } from "@/api/getArbBatch";
 import { getEthList } from "@/api/getEthList";
 import { getOptBatch } from "@/api/getOptBatch";
-import { LogoContext, DefaultLogo} from "@/app/hooks/useLogoContext";
+import { LogoContext, DefaultLogo } from "@/app/hooks/useLogoContext";
 import BlockProps from "@/types/BlockProps";
 import ChainOption from "@/types/ChainType";
 
@@ -34,28 +34,30 @@ const Home = () => {
   useEffect(() => {
     const requestChainProps = async () => {
       const response = await getEthList(6);
-      const number_list = response.map(block => block.number);
+      const number_list = response.map((block) => block.number);
 
-      const blocks: BlockProps[] = await Promise.all(number_list.map(async number => {
-        const arb_count = (await getArbBatch(number)).length;
-        const opt_count = (await getOptBatch(number)).length;
+      const blocks: BlockProps[] = await Promise.all(
+        number_list.map(async (number) => {
+          const arb_count = (await getArbBatch(number)).length;
+          const opt_count = (await getOptBatch(number)).length;
 
-        const l2 = [
-          {
-            count: arb_count,
-            name: "arbitrum"
-          },
-          {
-            count: opt_count,
-            name: "optimism"
-          }
-        ];
+          const l2 = [
+            {
+              count: arb_count,
+              name: "arbitrum",
+            },
+            {
+              count: opt_count,
+              name: "optimism",
+            },
+          ];
 
-        return {
-          l2: l2,
-          number: parseInt(number, 16)
-        };
-      }));
+          return {
+            l2: l2,
+            number: parseInt(number, 16),
+          };
+        }),
+      );
 
       setBlockProps(blocks.reverse());
     };
