@@ -8,18 +8,17 @@ import BlockDetailRow from "./BlockDetailRow";
 
 type BlockDetailProps = {
   chain_name: string;
-  isVisible: boolean;
   width: number;
 };
 
-const BlockDetailTable = styled.div`
-  // width: ${(props: BlockDetailProps) => props.width}; //     width: 400px;がベスト
+//TODO:fix width
+const BlockDetailTable = styled.div<{ isVisible: boolean }>`
   width: 400px;
   margin-left: 16px;
   background-color: #fff;
   border-radius: 8px;
   box-shadow: gray 0 0 6px;
-  ${({ isVisible }) => (isVisible ? "display: none;" : "display: block;")};
+  display: ${(props) => (props.isVisible ? "block" : "none")};
 `;
 
 const BlockDetail = (props: BlockDetailProps) => {
@@ -35,11 +34,7 @@ const BlockDetail = (props: BlockDetailProps) => {
 
   return (
     <>
-      <BlockDetailTable
-        chain_name={props.chain_name}
-        isVisible={activeBlock !== 0}
-        width={props.width}
-      >
+      <BlockDetailTable isVisible={activeBlock !== 0}>
         {blocks.map((block) => {
           return (
             <BlockDetailRow

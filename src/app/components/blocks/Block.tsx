@@ -88,8 +88,8 @@ const Block = (props: BlockProps) => {
   return (
     <Container
       blockData={{
-        block_number: 0,
-        l2_chains: [],
+        block_number: props.blockData.block_number,
+        l2_chains: props.blockData.l2_chains,
       }}
       onClick={toggleBlockDetail}
     >

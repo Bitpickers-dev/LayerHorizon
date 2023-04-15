@@ -8,6 +8,8 @@ import { BlockContext } from "@/app/hooks/useBlockContext";
 import ChainOption from "@/types/ChainType";
 import EthBlockData from "@/types/EthBlockData";
 
+import BlockDetail from "../BlockDetail";
+
 import Block from "./Block";
 
 const BlocksContainer = styled.div`
@@ -24,6 +26,7 @@ type ChainProps = {
   ethBlockData: EthBlockData[];
 };
 
+//選択されたチェーンを表示する
 const Chain = (props: ChainProps) => {
   const [activeBlock, setActiveBlock] = useState<number>(0);
   const blocks = Array.from({ length: 5 }, (_, i) => i + 1);
@@ -35,7 +38,7 @@ const Chain = (props: ChainProps) => {
             return (
               <Block
                 blockData={{
-                  block_number: 0,
+                  block_number: 1,
                   l2_chains: [],
                 }}
                 key={data}
@@ -43,6 +46,7 @@ const Chain = (props: ChainProps) => {
             );
           })}
         </BlockWrapper>
+        <BlockDetail chain_name={""} width={0} />
       </BlocksContainer>
     </BlockContext.Provider>
   );
