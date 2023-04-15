@@ -1,9 +1,9 @@
 type BlockProps = {
-    number: number;
     l2: {
-      name: string;
       count: number;
+      name: string;
     }[];
+    number: number;
 };
 
 export default BlockProps;

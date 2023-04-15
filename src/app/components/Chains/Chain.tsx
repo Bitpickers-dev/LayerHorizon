@@ -2,14 +2,10 @@ import React, { useState } from "react";
 
 import styled from "@emotion/styled";
 
-import { MultiValue } from "react-select";
-
-import dummyBlockData from "@/app/dummy_api/BlockData";
-import { BlockContext } from "@/app/hooks/useBlockContext";
-import ChainOption from "@/types/ChainType";
-import EthBlockData from "@/types/EthBlockData";
 
 import Block from "@/app/components/Blocks/Block";
+import { BlockContext } from "@/app/hooks/useBlockContext";
+
 import BlockProps from "@/types/BlockProps";
 
 import BlockContainer from "../Blocks/BlockContainer";
@@ -37,14 +33,15 @@ const Chain = (props: ChainProps) => {
           {props.blocks.map((block) => {
             return (
               <Block
-                number={block.number}
+                key={block.number}
                 l2={block.l2}
+                number={block.number}
               />
             );
           })}
         </BlockWrapper>
       </BlocksContainer>
-      <BlockContainer blockData={dummyBlockData[0]} />
+      <BlockContainer blockData={number} />
     </BlockContext.Provider>
   );
 };
