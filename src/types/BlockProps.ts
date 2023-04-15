@@ -4,6 +4,7 @@ type BlockProps = {
     name: string;
   }[];
   number: number;
+  timestamp: number;
 };
 
 export default BlockProps;

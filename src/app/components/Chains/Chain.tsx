@@ -72,7 +72,7 @@ const Chain = (props: ChainProps) => {
 
       const eth: Chain = {
         blocks: ethBlocks,
-        chain_name: "ethreum",
+        chain_name: "ethereum",
       };
 
       const arb: Chain = {
@@ -95,7 +95,7 @@ const Chain = (props: ChainProps) => {
       <BlocksContainer>
         <BlockWrapper>
           {props.blocks.map((block) => {
-            return <Block key={block.number} l2={block.l2} number={block.number} />;
+            return <Block key={block.number} l2={block.l2} number={block.number} timestamp={block.timestamp} />;
           })}
         </BlockWrapper>
       </BlocksContainer>
