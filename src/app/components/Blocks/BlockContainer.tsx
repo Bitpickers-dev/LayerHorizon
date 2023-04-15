@@ -30,7 +30,7 @@ const BlockContainer = (props: BlockContainerProps) => {
       </BlockDetailContainer>
     );
   } else {
-    return <p>No block selected</p>;
+    return ;
   }
 };
 
