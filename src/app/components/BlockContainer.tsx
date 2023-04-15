@@ -1,30 +1,28 @@
+import { useContext } from "react";
 import styled from "@emotion/styled";
 
 import BlockDetail from "./BlockDetail";
-
-type Blocks = {
-  chain_name: string;
-  width: number;
-};
+import EthBlockData from "@/types/EthBlockData";
+import { BlockContext } from "../hooks/useBlockContext";
 
 type BlockContainerProps = {
-  chains: Blocks;
-  number_of_chains: number;
+  blockData: EthBlockData;
 };
 
 const BlockContainer = (props: BlockContainerProps) => {
-  const chains = Array.from({ length: 3 }, (_, i) => i + 1);
+  const { activeBlock } = useContext(BlockContext);
 
-  const BlockDetailContainer = styled.div`
+  const BlockDetailContainer = styled.div<{ isVisible: boolean }>`
     display: flex;
     margin: auto;
-    justify-content: space-between;
+    justify-content: left;
+    display: ${(props) => (props.isVisible ? "flex" : "none")};
   `;
 
   return (
-    <BlockDetailContainer>
-      {chains.map((chain) => (
-        <BlockDetail chain_name={props.chains.chain_name} key={chain} width={props.chains.width} />
+    <BlockDetailContainer isVisible={activeBlock !== 0}>
+      {props.blockData.l2_chains.map(chain => (
+        <BlockDetail chain_name={chain.chainName} key={chain.chainName} />
       ))}
     </BlockDetailContainer>
   );
