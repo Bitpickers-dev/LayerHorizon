@@ -17,8 +17,6 @@ import Chain from "./components/Chains/Chain";
 import ChainSelector from "./components/Chains/ChainSelector";
 import Icon from "./components/Icon";
 
-
-
 const Wrapper = styled.div`
   padding: 12px;
 `;
@@ -34,7 +32,7 @@ const Home = () => {
   const [blockProps, setBlockProps] = useState<BlockProps[]>([]);
 
   useEffect(() => {
-    const requestChanProps = async () => {
+    const requestChainProps = async () => {
       const response = await getEthList(6);
       const number_list = response.map(block => block.number);
 
@@ -62,7 +60,7 @@ const Home = () => {
       setBlockProps(blocks.reverse());
     };
 
-    requestChanProps();
+    requestChainProps();
   }, []);
 
   const handleSelectChain = (chain: MultiValue<ChainOption>): void => {
