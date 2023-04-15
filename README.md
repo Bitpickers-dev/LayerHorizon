@@ -26,3 +26,5 @@ python manage.py migrate
 vim .env # add ALCHEMY_KEY
 python manage.py runserver --noreload
 ```
+## Design
+https://www.figma.com/file/bNHEIZ5Z8OwUnLFTwiy13k/LayerHorizon

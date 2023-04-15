@@ -6,8 +6,8 @@ import { MultiValue } from "react-select";
 
 import { getEthBlock } from "@/api/getEthBlock";
 
-
 import { getOptBatch } from "@/api/getOptBatch";
+
 import Block from "@/app/components/Blocks/Block";
 import { BlockContext } from "@/app/hooks/useBlockContext";
 
@@ -17,7 +17,6 @@ import Chain from "@/types/ChainData";
 import ChainOption from "@/types/ChainType";
 
 import BlockContainer from "../Blocks/BlockContainer";
-
 
 const BlocksContainer = styled.div`
   display: flex;
@@ -61,22 +60,32 @@ const Chain = (props: ChainProps) => {
   useEffect(() => {
     const requestBlockContainerProps = async () => {
 
-      console.log("props.selectedChain=", props.selectedChain)
-
-
       const ethBlockResponse = await getEthBlock(activeBlock.toString(16));
       chains.push({
         blocks: [ethBlockResponse],
         chain_name:'ethreum'
       });
 
-      console.log("typeof(props.selectedChain)=", typeof(props.selectedChain))
+      const arbBlocks = await getArbBatch(activeBlock.toString(16));
+      const optBlocks = await getOptBatch(activeBlock.toString(16));
+      const ethBlocks = [await getEthBlock(activeBlock.toString(16))];
 
-      console.log("props.selectedChain.values=", props.selectedChain.values);
+      const eth: Chain = {
+        blocks: ethBlocks,
+        chain_name: "ethreum",
+      };
 
+      const arb: Chain = {
+        blocks: arbBlocks,
+        chain_name: "arbitrum",
+      };
 
+      const opt: Chain = {
+        blocks: optBlocks,
+        chain_name: "optimism",
+      };
 
-      setBlockContainerProps(chains);
+      setBlockContainerProps([eth, arb, opt]);
     };
 
     requestBlockContainerProps();
@@ -86,17 +95,11 @@ const Chain = (props: ChainProps) => {
       <BlocksContainer>
         <BlockWrapper>
           {props.blocks.map((block) => {
-            return (
-              <Block
-                key={block.number}
-                l2={block.l2}
-                number={block.number}
-              />
-            );
+            return <Block key={block.number} l2={block.l2} number={block.number} />;
           })}
         </BlockWrapper>
       </BlocksContainer>
-      <BlockContainer chains={blockContainerProps}/>
+      <BlockContainer chains={blockContainerProps} />
     </BlockContext.Provider>
   );
 };
