@@ -44,7 +44,6 @@ const BlockDetail = (props: BlockDetailProps) => {
 
   const logo = (logos.find(logo => logo.name === props.chain.chain_name)?.logo)??DummyLogo;
 
-  console.log(props)
 
   //TODO:opのロゴも表示させる
   return (
@@ -53,7 +52,7 @@ const BlockDetail = (props: BlockDetailProps) => {
         <BlockDetailTable>
           <ImageRow>
             <Image alt={props.chain.chain_name} height={25} src={logo} width={25} />
-            <Period>{props.chain.blocks[0].number} ~ {props.chain.blocks.slice(-1)[0].number}</Period>
+            {/* <Period>{props.chain.blocks[0].number} ~ {props.chain.blocks.slice(-1)[0].number}</Period> */}
           </ImageRow>
           {props.chain.blocks.map((block) => {
             return (
