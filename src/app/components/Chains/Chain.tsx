@@ -38,10 +38,10 @@ const Chain = (props: ChainProps) => {
     const requestBlockContainerProps = async () => {
       const arbBlocks = await getArbBatch(activeBlock.toString(16));
       const optBlocks = await getOptBatch(activeBlock.toString(16));
-      const ethBlockResponse = await getEthBlock(activeBlock.toString(16));
+      const ethBlocks = [await getEthBlock(activeBlock.toString(16))];
 
       const eth: Chain = {
-        blocks: [ethBlockResponse],
+        blocks: ethBlocks,
         chain_name:'ethreum'
       }
 
