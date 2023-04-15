@@ -8,7 +8,6 @@ import { BlockContext } from "../../hooks/useBlockContext";
 
 import BlockDetail from "./BlockDetail";
 
-
 type BlockContainerProps = {
   chains: ChainData[]
 };

@@ -12,7 +12,6 @@ import { BlockContext } from "@/app/hooks/useBlockContext";
 import { LogoContext } from "@/app/hooks/useLogoContext";
 import BlockProps from "@/types/BlockProps";
 
-
 const Container = styled.button`
   width: 200px;
   padding: 8px 16px;
