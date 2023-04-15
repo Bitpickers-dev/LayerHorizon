@@ -32,7 +32,6 @@ const Home = () => {
   const [blockProps, setBlockProps] = useState<BlockProps[]>([]);
 
   useEffect(() => {
-
     const requestChainProps = async () => {
       const response = await getEthList(6);
 
