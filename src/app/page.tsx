@@ -39,7 +39,6 @@ const Home = () => {
         const l2:{count: number, name: string}[] = [];
         if (Object.values(selectedChain).some(chain => chain.value === "Arbitrum")) {
           const arb_count = (await getArbBatch(block.number)).length;
-          console.log("arb_count=", arb_count)
           l2.push({
             count: arb_count,
             name: "arbitrum"
@@ -47,7 +46,6 @@ const Home = () => {
         }
         if (Object.values(selectedChain).some(chain => chain.value === "Optimism")) {
           const opt_count = (await getOptBatch(block.number)).length;
-          console.log("opt_count=", opt_count)
           l2.push({
             count: opt_count,
             name: "optimism"
