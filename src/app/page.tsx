@@ -76,7 +76,7 @@ const Home = () => {
             <Icon />
             <ChainSelector onSelectChain={handleSelectChain} />
           </Header>
-          <Chain blocks={blockProps} />
+          <Chain blocks={blockProps} selectedChain={selectedChain} />
         </Wrapper>
       </LogoContext.Provider>
     </main>

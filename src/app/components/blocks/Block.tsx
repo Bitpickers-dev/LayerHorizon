@@ -5,7 +5,6 @@ import { useContext } from "react";
 import styled from "@emotion/styled";
 import Image from "next/image";
 
-import DummyLogo from "public/img/chain_logo/dummy.svg";
 import EthereumLogo from "public/img/chain_logo/ethereum.svg";
 
 import { BlockContext } from "@/app/hooks/useBlockContext";
@@ -86,7 +85,7 @@ const Block = (props: BlockProps) => {
           <EthereumBlockAge>TODO display age</EthereumBlockAge>
         </div>
       </Header>
-      <L2BlockContainer>
+      {/* <L2BlockContainer>
         {
           props.l2.map(l2 => {
             const logo = (logos.find(logo => logo.name === l2.name)?.logo)??DummyLogo;
@@ -100,7 +99,7 @@ const Block = (props: BlockProps) => {
             )
           })
         }
-      </L2BlockContainer>
+      </L2BlockContainer> */}
     </Container>
   );
 };
