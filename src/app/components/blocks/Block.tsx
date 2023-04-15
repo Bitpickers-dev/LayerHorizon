@@ -1,13 +1,17 @@
 "use client";
 
+import { useContext } from "react";
+
 import styled from "@emotion/styled";
 import Image from "next/image";
 
 import EthereumLogo from "public/img/chain_logo/ethereum.svg";
 
+import { BlockContext } from "@/app/hooks/useBlockContext";
 import EthBlockData from "@/types/EthBlockData";
 
 import ArbitrumLogo from "../../public/img/chain_logos/arbitrum.svg";
+import OptimismLogo from "../../public/img/chain_logos/optimism.svg";
 
 const Container = styled.button<BlockProps>`
   width: 200px;
@@ -15,6 +19,7 @@ const Container = styled.button<BlockProps>`
   padding-top: 16px;
   border-radius: 16px;
   background-color: #fefefe;
+  margin-left: 16px;
 `;
 
 const Header = styled.div`
@@ -71,13 +76,22 @@ type BlockProps = {
 };
 
 const Block = (props: BlockProps) => {
+  const { activeBlock, setActiveBlock } = useContext(BlockContext);
+  const isBlockVisible = activeBlock;
+  const toggleBlockDetail = () => {
+    if (isBlockVisible) {
+      setActiveBlock(0);
+    } else {
+      setActiveBlock(props.blockData.block_number);
+    }
+  };
   return (
     <Container
       blockData={{
         block_number: 0,
         l2_chains: [],
       }}
-      onClick={() => console.log("clicked")}
+      onClick={toggleBlockDetail}
     >
       <Header>
         <Image alt="ethereum" height={40} src={EthereumLogo} width={40} />
@@ -89,6 +103,11 @@ const Block = (props: BlockProps) => {
       <L2BlockContainer>
         <L2Block>
           <Image alt={"arbitrum"} height={25} src={ArbitrumLogo} width={25} />
+          <L2ChainName>{"hoge"}</L2ChainName>
+          <NumberOfBlocks>{12}</NumberOfBlocks>
+        </L2Block>{" "}
+        <L2Block>
+          <Image alt={"arbitrum"} height={25} src={OptimismLogo} width={25} />
           <L2ChainName>{"hoge"}</L2ChainName>
           <NumberOfBlocks>{12}</NumberOfBlocks>
         </L2Block>{" "}

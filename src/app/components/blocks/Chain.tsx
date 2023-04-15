@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import styled from "@emotion/styled";
 
@@ -25,18 +25,26 @@ type ChainProps = {
 };
 
 const Chain = (props: ChainProps) => {
-  const [activeBlock, setActiveBlock] = useState<number | null>(null);
-
+  const [activeBlock, setActiveBlock] = useState<number>(0);
+  const blocks = Array.from({ length: 5 }, (_, i) => i + 1);
   return (
-    <BlocksContainer>
-      <BlockContext.Provider value={{ activeBlock, setActiveBlock }}>
+    <BlockContext.Provider value={{ activeBlock, setActiveBlock }}>
+      <BlocksContainer>
         <BlockWrapper>
-          {props.ethBlockData.map((data) => {
-            return <Block blockData={data} key={data.block_number} />;
+          {blocks.map((data) => {
+            return (
+              <Block
+                blockData={{
+                  block_number: 0,
+                  l2_chains: [],
+                }}
+                key={data}
+              />
+            );
           })}
         </BlockWrapper>
-      </BlockContext.Provider>
-    </BlocksContainer>
+      </BlocksContainer>
+    </BlockContext.Provider>
   );
 };
 

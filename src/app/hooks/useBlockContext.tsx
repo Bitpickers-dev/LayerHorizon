@@ -1,11 +1,11 @@
 import { createContext } from "react";
 
 type BlockContextType = {
-  activeBlock: number | null;
+  activeBlock: number;
   setActiveBlock: (blockNumber: number) => void;
 };
 
 export const BlockContext = createContext<BlockContextType>({
-  activeBlock: null,
+  activeBlock: 0,
   setActiveBlock: () => {},
 });

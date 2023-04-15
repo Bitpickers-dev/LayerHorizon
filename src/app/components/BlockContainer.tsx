@@ -24,7 +24,12 @@ const BlockContainer = (props: BlockContainerProps) => {
   return (
     <BlockDetailContainer>
       {chains.map((chain) => (
-        <BlockDetail chain_name={props.chains.chain_name} key={chain} width={props.chains.width} />
+        <BlockDetail
+          chain_name={props.chains.chain_name}
+          isVisible={false}
+          key={chain}
+          width={props.chains.width}
+        />
       ))}
     </BlockDetailContainer>
   );
